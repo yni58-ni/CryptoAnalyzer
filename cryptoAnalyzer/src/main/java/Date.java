@@ -42,4 +42,12 @@ public class Date {
 	public void setYear(int newYear) {
 		this.year = newYear;
 	}
+	
+	public void printString() {
+		System.out.println(this.day + " - " + this.month);
+	}
+	
+	public void printInt() {
+		System.out.println(this.day + " - " + this.month + " - " + this.month);
+	}
 }
