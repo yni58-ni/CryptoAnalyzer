@@ -1,3 +1,8 @@
+/***
+ * 
+ * @author Yeonsil Choi
+ *
+ */
 public class Date {
 
 	private int day;
