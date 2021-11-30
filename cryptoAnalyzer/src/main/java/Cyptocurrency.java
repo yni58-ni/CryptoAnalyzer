@@ -19,7 +19,7 @@ public class Cyptocurrency {
 		return this.name;		
 	}
 	
-	public void setType(String newName) {
+	public void setName(String newName) {
 		this.name = newName;
 	}
 
