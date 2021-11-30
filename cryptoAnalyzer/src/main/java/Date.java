@@ -72,30 +72,16 @@ public class Date {
 		this.year = newYear;
 	}
 	
-<<<<<<< HEAD
-	/***
-	 * print string
-	 */
-	public void printString() {
-		System.out.println(this.day + " - " + this.month);
-=======
+
 	public String printString() {
 		if(day<10) {
 			return "0"+day+"-"+months[month-1];
 		}else {
 			return day+"-"+months[month-1];
 		}
-
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
 	}
-	
-<<<<<<< HEAD
-	/***
-	 * print int
-	 */
-	public void printInt() {
-		System.out.println(this.day + " - " + this.month + " - " + this.month);
-=======
+
+
 	public String printInt() {
 		//13-09-2021
 		if(month<10) {
@@ -111,6 +97,6 @@ public class Date {
 				return day+"-"+month+"-"+year;
 			}
 		}
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
+
 	}
 }
