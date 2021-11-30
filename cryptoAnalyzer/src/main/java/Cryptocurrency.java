@@ -27,7 +27,7 @@ public class Cryptocurrency {
 	 * 
 	 * @param newName
 	 */
-	public void setType(String newName) {
+	public void setName(String newName) {
 		this.name = newName;
 	}
 
