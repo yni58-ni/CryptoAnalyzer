@@ -119,5 +119,4 @@ public class ScatterChartViewer extends Viewer{
 		chartPanel.setBackground(Color.white);
 		MainUINew.getInstance().updateStats(chartPanel);
 	}
-
 }

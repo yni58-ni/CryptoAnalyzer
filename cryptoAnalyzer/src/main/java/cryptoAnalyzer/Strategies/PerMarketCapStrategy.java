@@ -55,7 +55,6 @@ public class PerMarketCapStrategy extends Strategy{
 				}
 			}	
 		}
-		
 		return res;	
 	}
 }

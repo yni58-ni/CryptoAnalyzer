@@ -119,5 +119,4 @@ public class LineChartViewer extends Viewer{
 		
 		MainUINew.getInstance().updateStats(chartPanel);
 	}
-
 }

@@ -49,7 +49,6 @@ public class MarketCapStrategy extends Strategy{
 			}	
 		}
 		
-		return res;
-				
+		return res;		
 	}
 }

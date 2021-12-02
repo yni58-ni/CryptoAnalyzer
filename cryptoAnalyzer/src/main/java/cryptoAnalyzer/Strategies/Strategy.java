@@ -14,6 +14,7 @@ public abstract class Strategy {
 	 */
 	private Result res;
 	
+	
 	/**
 	 * perform calculation of strategy
 	 * @param sel user selection

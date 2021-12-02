@@ -56,7 +56,6 @@ public class BarChartViewer extends Viewer{
 		row = res.getRow();
 		col = res.getCol();
 	}
-
 	
 	/**
 	 * Method to update user selection and result

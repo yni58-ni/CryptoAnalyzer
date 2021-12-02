@@ -50,5 +50,4 @@ public class ViewerModel {
 			v.generateChart();
 		}
 	}
-
 }

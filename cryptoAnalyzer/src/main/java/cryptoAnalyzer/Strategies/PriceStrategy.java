@@ -50,7 +50,6 @@ public class PriceStrategy extends Strategy{
 			}	
 		}
 		
-		return res;
-				
+		return res;		
 	}
 }
