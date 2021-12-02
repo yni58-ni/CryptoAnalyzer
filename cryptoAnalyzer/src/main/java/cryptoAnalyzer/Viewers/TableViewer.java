@@ -133,4 +133,5 @@ public class TableViewer extends Viewer{
 		
 		MainUINew.getInstance().updateStats(scrollPane);
 	}
+	
 }

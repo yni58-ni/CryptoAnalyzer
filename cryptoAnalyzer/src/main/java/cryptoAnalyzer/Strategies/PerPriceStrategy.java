@@ -55,6 +55,7 @@ public class PerPriceStrategy extends Strategy {
 				}
 			}	
 		}
+		
 		return res;	
 	}
 }
