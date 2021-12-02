@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
@@ -28,35 +29,43 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import cryptoAnalyzer.Strategies.AnalysisFactory;
+import cryptoAnalyzer.Strategies.AnalysisServerFacade;
+import cryptoAnalyzer.Strategies.Result;
+import cryptoAnalyzer.Strategies.Strategy;
+import cryptoAnalyzer.demoClasses.Selection;
 import cryptoAnalyzer.utils.AvailableCryptoList;
 import cryptoAnalyzer.utils.DataVisualizationCreator;
+import cryptoAnalyzer.utils.DataVisualizationCreatorOriginal;
 
-public class MainUI extends JFrame implements ActionListener{
+/**
+ * This is a class for main UI
+ *
+ */
+public class MainUINew extends JFrame implements ActionListener{
 	/**
-	 * 
-	 * 
-	 * ***
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static MainUI instance;
+	private static MainUINew instance;
 	private JPanel stats, chartPanel, tablePanel;
 	
 	// Should be a reference to a separate object in actual implementation
 	private List<String> selectedList;
+////	private Selection select;
 	
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
 
-	public static MainUI getInstance() {
+	public static MainUINew getInstance() {
 		if (instance == null)
-			instance = new MainUI();
+			instance = new MainUINew();
 
 		return instance;
 	}
 
-	private MainUI() {
+	private MainUINew() {
 		
 		// Set window title
 		super("Crypto Analysis Tool");
@@ -67,6 +76,7 @@ public class MainUI extends JFrame implements ActionListener{
 		cryptoList = new JComboBox<String>(cryptoNames);
 		
 		selectedList = new ArrayList<>();
+////		select = new Selection();
 		
 		JButton addCrypto = new JButton("+");
 		addCrypto.setActionCommand("add");
@@ -99,6 +109,7 @@ public class MainUI extends JFrame implements ActionListener{
 
 		    @Override
 		    public Object stringToValue(String text) throws ParseException {
+
 		        return dateFormatter.parseObject(text);
 		    }
 
@@ -112,6 +123,17 @@ public class MainUI extends JFrame implements ActionListener{
 		        return "";
 		    }
 		});
+		datePicker.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				JDatePanelImpl picker = (JDatePanelImpl) event.getSource();
+				Date selectedDate = (Date) picker.getModel().getValue();
+
+				System.out.println(selectedDate.toString());
+			}
+		});
+		
 		
 		JButton refresh = new JButton("Refresh");
 		refresh.setActionCommand("refresh");
@@ -124,11 +146,22 @@ public class MainUI extends JFrame implements ActionListener{
 		metricsNames.add("MarketCap");
 		metricsNames.add("Volume");
 		metricsNames.add("Coins in circulation");
+		metricsNames.add("Percent Change of Price");
+		metricsNames.add("Percent Change of MarketCap");
+		metricsNames.add("Percent Change of Volume");
+		metricsNames.add("Percent Change of Coins in circulation");
 		JComboBox<String> metricsList = new JComboBox<String>(metricsNames);
-////		selection.setAnalysisType(metricsList.getSelectedItem());
+		metricsList.addActionListener(new ActionListener() {
 
-		add(metricsList);
-		
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				JComboBox<String> combo = (JComboBox<String>) event.getSource();
+				String selectedMetric = combo.getSelectedItem().toString();
+
+				System.out.println(selectedMetric.toString());
+			}
+		});
+	
 		JLabel intervalLabel = new JLabel("        Choose interval: ");
 
 		Vector<String> intervalNames = new Vector<String>();
@@ -139,6 +172,16 @@ public class MainUI extends JFrame implements ActionListener{
 
 		JComboBox<String> intervalList = new JComboBox<String>(intervalNames);
 
+		intervalList.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				JComboBox<String> combo = (JComboBox<String>) event.getSource();
+				String selectedInterval = combo.getSelectedItem().toString();
+
+				System.out.println(selectedInterval.toString());
+			}
+		});
 		JPanel south = new JPanel();
 		south.add(from);
 		south.add(datePicker);
@@ -181,7 +224,7 @@ public class MainUI extends JFrame implements ActionListener{
 	
 
 	public static void main(String[] args) {
-		JFrame frame = MainUI.getInstance();
+		JFrame frame = MainUINew.getInstance();
 		frame.setSize(900, 600);
 		frame.pack();
 		frame.setVisible(true);
@@ -190,10 +233,17 @@ public class MainUI extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
+		System.out.println(command);
 		if ("refresh".equals(command)) {
 			stats.removeAll();
-			DataVisualizationCreator creator = new DataVisualizationCreator();
-			creator.createCharts();
+			
+			
+			Selection sel =  new Selection();
+
+			AnalysisServerFacade server = new AnalysisServerFacade();
+			server.performAnalysis(sel);
+			
+			
 		} else if ("add".equals(command)) {
 			selectedList.add(cryptoList.getSelectedItem().toString());
 			String text = "";
