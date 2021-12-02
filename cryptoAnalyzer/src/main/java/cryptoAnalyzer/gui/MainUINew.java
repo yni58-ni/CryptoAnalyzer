@@ -260,5 +260,4 @@ public class MainUINew extends JFrame implements ActionListener{
 			selectedCryptoList.setText(text);
 		}
 	}
-	
 }
