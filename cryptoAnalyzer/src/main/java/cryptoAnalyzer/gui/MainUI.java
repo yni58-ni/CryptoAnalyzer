@@ -125,6 +125,10 @@ public class MainUI extends JFrame implements ActionListener{
 		metricsNames.add("Volume");
 		metricsNames.add("Coins in circulation");
 		JComboBox<String> metricsList = new JComboBox<String>(metricsNames);
+		
+		
+		
+		
 
 		JLabel intervalLabel = new JLabel("        Choose interval: ");
 

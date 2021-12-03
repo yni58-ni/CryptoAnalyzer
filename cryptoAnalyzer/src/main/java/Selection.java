@@ -60,17 +60,14 @@ public class Selection {
 		return cryptoName;
 	}
 	
-	public void setCrypto(Cryptocurrency crypto) {
+	public void addCrypto(Cryptocurrency crypto) {
 
 	}
 	
-	/***
-	 * 
-	 * @return 
-	 */
-	public Date[] getDate() {
-		return dates;
+	public void removeCrypto(Cryptocurrency crypto) {
+		
 	}
+	
 	
 	/**
 	 * 

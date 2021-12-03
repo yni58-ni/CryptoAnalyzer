@@ -41,12 +41,7 @@ public class DataVisualizationCreator {
 
 	private void createTableOutput() {
 		// Dummy dates for demo purposes. These shoul come from selection menu
-		Object[] columnNames = {"Cryptocurrency","13-Sept","14-Sept","15-Sept","16-Sept","17-Sept"};
-		
-		
-		//Object[] dateob = {"13-Sept","14-Sept","15-Sept","16-Sept","17-Sept"};
-		//Object[] columnNames = {"Cryptocurrency", dateob};
-		
+		Object[] columnNames = {"Cryptocurrency"};
 		
 		// Dummy data for demo purposes. These should come from actual fetcher
 		Object[][] data = {
