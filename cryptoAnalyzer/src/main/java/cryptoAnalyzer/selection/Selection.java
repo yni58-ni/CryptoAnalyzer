@@ -6,18 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-
-import org.jdatepicker.impl.JDatePanelImpl;
-
-import cryptoAnalyzer.selection.Dates;
-import cryptoAnalyzer.gui.MainUINew;
-
+import javax.swing.JOptionPane;
 /***
  * 
  * @author Yeonsil Choi; Nicole Ni; Grace Zhu
@@ -30,16 +20,10 @@ public class Selection {
 	private CryptoDate[] dates;
 	private Frequency freq;
 	private String analysisType;
-<<<<<<< HEAD
-	public Dates d;
-	public Calendar select;
-	
-=======
 	private Date startDate;
 	private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
 			"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
 	//private Calendar calendar;
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
 	
 	private static Selection instance = null;
 	
@@ -70,20 +54,10 @@ public class Selection {
 		return freq;	
 	}
 	
-<<<<<<< HEAD
-	/***
-	 * 
-	 * @return cryptoName
-	 */
-	public String[] getNames() {
-		return cryptoName;
-	}
-=======
 	public void setFreq(Frequency f) {
 		freq = f;
 	}
 	
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
 
 	/***
 	 * Getting method of getting analysis type
@@ -270,151 +244,6 @@ catch(IOException e) {
 		sel.getDateList();
 		
 	}
-	
-
-	
-//=======
-//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
-	/**
-	 * Getting method of geting dates
-	 * @param d
-	 */
-<<<<<<< HEAD
-	public Dates[] getDates() {	
-		//Dates d = new Dates(d.getDay(), d.getMonth(), d.getYear());
-		
-		System.out.println(d);
-=======
-/*
-	public CryptoDate[] getDates() {	
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-		//get selected date		
-		
-		//System.out.println(d.getDay());
-		//System.out.println(d.getMonth());
-		//System.out.println(d.getDay());
-		select.getTime();
-		select.set(d.getYear(), d.getMonth() + 1, d.getDay() + 1900);
-		select.getTime();
-		System.out.println(select.getTime());
-		
-		//selected date
-
-		
-		//get current date
-		Calendar cur = Calendar.getInstance();
-		
-		//get the number of days between two dates
-		long end = cur.getTimeInMillis();
-		long start = select.getTimeInMillis();
-		long days = TimeUnit.MILLISECONDS.toDays(Math.abs(end - start));
-		
-		//check if selected date is not a future date
-		//if current > selected -> 1
-		//if current < selected -> -1
-		//dates = new Dates[(int) (days + 1)];
-		//dates[0] = d;
-		
-		if (cur.compareTo(select) > 0) {
-			if (freq.getFreq() == "Daily") {
-				dates = new CryptoDate[(int) (days + 1)];
-				for (int i = 0; i < days; i++) {
-<<<<<<< HEAD
-					select.add(Calendar.DATE, i);
-					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
-=======
-					selected.add(Calendar.DATE, i);
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-					dates[i] = d;
-				}
-				//return dates;
-			}else if (freq.getFreq() == "Weekly") {
-				int index = (int) (days / 7);
-				dates = new CryptoDate[index + 1];
-				if (index == 0) {
-<<<<<<< HEAD
-					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
-=======
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-					dates[0] = d;
-					//return dates;
- 				} else if (index > 0) {
- 					//int n = 0;
-					for (int i = 0; i < index + 1; i++) {
-<<<<<<< HEAD
-						select.add(Calendar.WEEK_OF_MONTH, i);
-						d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
-=======
-						selected.add(Calendar.WEEK_OF_MONTH, i);
-						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-						dates[i] = d;
-						//n += 7;
-					}
-					//return dates;
- 				}
-				
-			}else if (freq.getFreq() == "Monthly") {
-				int index = (int) (days / 30);
-				dates = new CryptoDate[index + 1];
-				if (index == 0) {
-<<<<<<< HEAD
-					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
-=======
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-					dates[0] = d;
-					//return dates;
-				} else if (index > 0) {
- 					//int n = 0;
-					for (int i = 0; i < index + 1; i++) {
-<<<<<<< HEAD
-						select.add(Calendar.MONTH, i);
-						d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
-=======
-						selected.add(Calendar.MONTH, i);
-						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-						dates[i] = d;
-						//n += 7;
-					}
-					//return dates;				
-				}
-			}else if (freq.getFreq() == "Yearly") {
-				int index = (int) (days / 365);
-				dates = new CryptoDate[index + 1];
-				if (index == 0) {
-<<<<<<< HEAD
-					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
-=======
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-					dates[0] = d;
-					//return dates;
-				} else if (index > 0) {
-					for (int i = 0; i < index + 1; i++) {
-<<<<<<< HEAD
-						select.add(Calendar.YEAR, i);
-						d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
-=======
-						selected.add(Calendar.YEAR, i);
-						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
-						dates[i] = d;
-						//n += 7;
-					}
-					//return dates;
-				}
-				
-			}
-		} else if (cur.compareTo(select) < 0){
-			return null;
-		}
-		return dates;
-	}
-	*/
 	
 	/**
 	 * This is a class that checks if the selected crypto is allowed to be fetched
