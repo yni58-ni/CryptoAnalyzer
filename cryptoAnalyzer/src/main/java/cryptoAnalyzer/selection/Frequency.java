@@ -6,7 +6,7 @@ package cryptoAnalyzer.selection;
  */
 public class Frequency {
 	
-	private String freq;
+	public String freq;
 	
 	/***
 	 * 

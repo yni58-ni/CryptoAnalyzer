@@ -9,7 +9,7 @@ import javax.swing.JComboBox;
  */
 public class Cryptocurrency {
 	
-	private JComboBox<String> cryptoList;
+	//private JComboBox<String> cryptoList;
 	
 	private String name;
 	
