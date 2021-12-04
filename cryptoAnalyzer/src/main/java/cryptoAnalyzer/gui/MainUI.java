@@ -51,8 +51,8 @@ public class MainUI extends JFrame implements ActionListener{
 	
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
-	private Selection selection;
-	private Selection selection = new Selection();
+//	private Selection selection;
+//	private Selection selection = new Selection();
 
 	public static MainUI getInstance() {
 		if (instance == null)
@@ -202,22 +202,23 @@ public class MainUI extends JFrame implements ActionListener{
 			creator.createCharts();
 		} else if ("add".equals(command)) {
 			String a = cryptoList.getSelectedItem().toString();
-			try {
-				if(selection.checkAvailability(a)) { //when selected on is allowed to be fetched
+			//try {
+				
+				//if(selection.checkAvailability(a)) { //when selected on is allowed to be fetched
 					selectedList.add(cryptoList.getSelectedItem().toString());
 					String text = "";
 					for (String crypto: selectedList)
 						text += crypto + "\n";
 					
 					selectedCryptoList.setText(text);
-				}
-				else {
-					JOptionPane.showMessageDialog(this, "Invalid Cryptocurrency");
-				}
-			} catch (FileNotFoundException e1) {
+				//}
+				//else {
+				//	JOptionPane.showMessageDialog(this, "Invalid Cryptocurrency");
+				//}
+		//	} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+		//		e1.printStackTrace();
+		//	}
 		} else if ("remove".equals(command)) {
 			selectedList.remove(cryptoList.getSelectedItem());
 			String text = "";

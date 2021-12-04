@@ -98,6 +98,5 @@ public class CryptoDate {
 				return day+"-"+month+"-"+year;
 			}
 		}
-
 	}
 }

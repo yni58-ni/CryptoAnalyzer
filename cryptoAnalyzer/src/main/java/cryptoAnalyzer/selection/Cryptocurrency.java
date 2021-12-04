@@ -47,5 +47,4 @@ public class Cryptocurrency {
 			return false;
 		}
 	}
-
 }

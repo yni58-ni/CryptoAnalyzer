@@ -32,4 +32,5 @@ public class Frequency {
 	public void setFreq(String newFreq) {
 		this.freq = newFreq;
 	}
+	
 }
