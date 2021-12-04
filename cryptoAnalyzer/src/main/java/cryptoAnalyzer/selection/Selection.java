@@ -245,6 +245,108 @@ catch(IOException e) {
 		
 	}
 	
+
+	
+//=======
+//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
+	/**
+	 * Getting method of geting dates
+	 * @param d
+	 */
+/*
+	public CryptoDate[] getDates() {	
+		//get selected date		
+		Calendar selected = Calendar.getInstance();
+		selected.set(d.getYear(), d.getMonth(), d.getDay());
+		selected.getTime();
+		System.out.println(selected.getTime());
+		
+		//selected date
+
+		
+		//get current date
+		Calendar cur = Calendar.getInstance();
+		
+		//get the number of days between two dates
+		long end = cur.getTimeInMillis();
+		long start = selected.getTimeInMillis();
+		long days = TimeUnit.MILLISECONDS.toDays(Math.abs(end - start));
+		
+		//check if selected date is not a future date
+		//if current > selected -> 1
+		//if current < selected -> -1
+		//dates = new Dates[(int) (days + 1)];
+		//dates[0] = d;
+		
+		if (cur.compareTo(selected) > 0) {
+			if (freq.getFreq() == "Daily") {
+				dates = new CryptoDate[(int) (days + 1)];
+				for (int i = 0; i < days; i++) {
+					selected.add(Calendar.DATE, i);
+					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[i] = d;
+				}
+				//return dates;
+			}else if (freq.getFreq() == "Weekly") {
+				int index = (int) (days / 7);
+				dates = new CryptoDate[index + 1];
+				if (index == 0) {
+					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[0] = d;
+					//return dates;
+ 				} else if (index > 0) {
+ 					//int n = 0;
+					for (int i = 0; i < index + 1; i++) {
+						selected.add(Calendar.WEEK_OF_MONTH, i);
+						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						dates[i] = d;
+						//n += 7;
+					}
+					//return dates;
+ 				}
+				
+			}else if (freq.getFreq() == "Monthly") {
+				int index = (int) (days / 30);
+				dates = new CryptoDate[index + 1];
+				if (index == 0) {
+					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[0] = d;
+					//return dates;
+				} else if (index > 0) {
+ 					//int n = 0;
+					for (int i = 0; i < index + 1; i++) {
+						selected.add(Calendar.MONTH, i);
+						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						dates[i] = d;
+						//n += 7;
+					}
+					//return dates;				
+				}
+			}else if (freq.getFreq() == "Yearly") {
+				int index = (int) (days / 365);
+				dates = new CryptoDate[index + 1];
+				if (index == 0) {
+					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[0] = d;
+					//return dates;
+				} else if (index > 0) {
+					for (int i = 0; i < index + 1; i++) {
+						selected.add(Calendar.YEAR, i);
+						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						dates[i] = d;
+						//n += 7;
+					}
+					//return dates;
+				}
+				
+			}
+		} else if (cur.compareTo(selected) < 0){
+			return null;
+		}
+		return dates;
+	}
+	*/
+	
 	/**
 	 * This is a class that checks if the selected crypto is allowed to be fetched
 	 */

@@ -19,7 +19,7 @@ public class AnalysisFactory {
 		}else if(analysis.equals("marCap")) {
 			return new MarketCapStrategy();
 		
-		}else if(analysis.equals("volume")) {
+		}else if(analysis.equals("Volume")) {
 			return new VolumeStrategy();
 		
 		}else if(analysis.equals("CIC")) {
