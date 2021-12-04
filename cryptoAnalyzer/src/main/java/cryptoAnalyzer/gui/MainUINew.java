@@ -33,10 +33,12 @@ import cryptoAnalyzer.Strategies.AnalysisFactory;
 import cryptoAnalyzer.Strategies.AnalysisServerFacade;
 import cryptoAnalyzer.Strategies.Result;
 import cryptoAnalyzer.Strategies.Strategy;
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.Dates;
+import cryptoAnalyzer.selection.Frequency;
+import cryptoAnalyzer.selection.Selection;
 import cryptoAnalyzer.utils.AvailableCryptoList;
 import cryptoAnalyzer.utils.DataVisualizationCreator;
-import cryptoAnalyzer.utils.DataVisualizationCreatorOriginal;
+//import cryptoAnalyzer.utils.DataVisualizationCreatorOriginal;
 
 /**
  * This is a class for main UI
@@ -57,6 +59,9 @@ public class MainUINew extends JFrame implements ActionListener{
 	
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
+	
+	private static Dates d;
+	private static Frequency f;
 
 	public static MainUINew getInstance() {
 		if (instance == null)
@@ -129,7 +134,17 @@ public class MainUINew extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent event) {
 				JDatePanelImpl picker = (JDatePanelImpl) event.getSource();
 				Date selectedDate = (Date) picker.getModel().getValue();
+				
+				d = new Dates();
+				//d = new Dates(selectedDate.getDate(), selectedDate.getMonth() + 1, selectedDate.getYear() + 1900);
+				d.setDay(selectedDate.getDate());
+				d.setMon(selectedDate.getMonth());
+				d.setYear(selectedDate.getYear() + 1900);
 
+				System.out.println(d.getDay());
+				System.out.println(d.getMonth());
+				System.out.println(d.getYear());
+				
 				System.out.println(selectedDate.toString());
 			}
 		});
@@ -178,7 +193,9 @@ public class MainUINew extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent event) {
 				JComboBox<String> combo = (JComboBox<String>) event.getSource();
 				String selectedInterval = combo.getSelectedItem().toString();
-
+				
+				f = new Frequency();
+				f.setFreq(selectedInterval.toString());
 				System.out.println(selectedInterval.toString());
 			}
 		});

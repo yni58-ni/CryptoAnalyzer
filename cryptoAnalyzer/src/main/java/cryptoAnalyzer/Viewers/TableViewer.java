@@ -10,8 +10,7 @@ import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 
 import cryptoAnalyzer.Strategies.Result;
-import cryptoAnalyzer.demoClasses.Date;
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.*;
 import cryptoAnalyzer.gui.MainUINew;
 
 /**
@@ -77,7 +76,7 @@ public class TableViewer extends Viewer{
 			if(i==0) {
 				columnNames[i] = result[0][i];
 			}else {
-				columnNames[i] = ((Date)(result[0][i])).printString();
+				columnNames[i] = ((Dates)(result[0][i])).printString();
 			}
 			
 		}		

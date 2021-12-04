@@ -1,6 +1,6 @@
 package cryptoAnalyzer.Strategies;
 
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.*;
 
 /**
  * This abstract parent class is represent class of strategy

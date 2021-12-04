@@ -1,7 +1,6 @@
 package cryptoAnalyzer.Strategies;
 
-import cryptoAnalyzer.demoClasses.Date;
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.*;
 import cryptoAnalyzer.utils.DataFetcher;
 
 /**
@@ -24,7 +23,7 @@ public class PerCICStrategy extends Strategy{
 		int numRow = sel.getNames().length;
 		int numCol = sel.getDates().length-1;
 		String[] cryptoList = sel.getNames();
-		Date[] dateList = sel.getDates();
+		Dates[] dateList = sel.getDates();
 		
 		Result res = new Result(numRow,numCol);
 
@@ -41,7 +40,7 @@ public class PerCICStrategy extends Strategy{
 					}else {
 						String cName = ((String) res.getResult()[i][0]).toLowerCase(); //name of crypto
 						String prevDate = dateList[j-1].printInt(); //previous date
-						String curDate = ((Date) res.getResult()[0][j]).printInt(); //current date
+						String curDate = ((Dates) res.getResult()[0][j]).printInt(); //current date
 						
 						double prevMarCap = dFetcher.getMarketCapForCoin(cName, prevDate);
 						double curMarCap = dFetcher.getMarketCapForCoin(cName, curDate);

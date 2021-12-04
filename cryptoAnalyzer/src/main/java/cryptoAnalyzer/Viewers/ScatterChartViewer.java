@@ -23,8 +23,7 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
 import cryptoAnalyzer.Strategies.Result;
-import cryptoAnalyzer.demoClasses.Date;
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.*;
 import cryptoAnalyzer.gui.MainUINew;
 
 /**
@@ -90,7 +89,7 @@ public class ScatterChartViewer extends Viewer{
 			String s = result[i][0]+" - "+select.getAnalysisType();
 			TimeSeries series = new TimeSeries(s);
 			for(int j=1; j<col; j++) {
-				Date d = (Date)result[0][j];
+				Dates d = (Dates)result[0][j];
 				series.add(new Day(d.getDay(),d.getMonth(),d.getYear()),(double)result[i][j]);
 				
 			}

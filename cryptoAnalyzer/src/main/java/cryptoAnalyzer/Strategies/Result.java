@@ -1,6 +1,6 @@
 package cryptoAnalyzer.Strategies;
 
-import cryptoAnalyzer.demoClasses.Date;
+import cryptoAnalyzer.selection.*;
 
 /**
  * This class represent the result of calculations
@@ -65,7 +65,7 @@ public class Result {
 	 * @param date date
 	 * @param col the column the date is located
 	 */
-	public void setDate(Date date, int col) {
+	public void setDate(Dates date, int col) {
 		res[0][col] = date;
 	}
 	

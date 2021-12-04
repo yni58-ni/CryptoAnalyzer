@@ -9,7 +9,7 @@ import cryptoAnalyzer.Viewers.ScatterChartViewer;
 import cryptoAnalyzer.Viewers.TableViewer;
 import cryptoAnalyzer.Viewers.Viewer;
 import cryptoAnalyzer.Viewers.ViewerModel;
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.Selection;
 
 /**
  * This class represent analysis server using facade design pattern

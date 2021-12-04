@@ -1,7 +1,7 @@
 package cryptoAnalyzer.Viewers;
 
 import cryptoAnalyzer.Strategies.Result;
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.*;
 
 /**
  * This class represent viewer control

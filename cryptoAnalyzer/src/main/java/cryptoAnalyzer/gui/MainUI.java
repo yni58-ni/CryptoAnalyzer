@@ -125,17 +125,11 @@ public class MainUI extends JFrame implements ActionListener{
 		metricsNames.add("Volume");
 		metricsNames.add("Coins in circulation");
 		JComboBox<String> metricsList = new JComboBox<String>(metricsNames);
-<<<<<<< HEAD
 		
 		
 		
 		
-=======
-////		selection.setAnalysisType(metricsList.getSelectedItem());
->>>>>>> branch 'master' of ssh://git@repo.csd.uwo.ca:7999/compsci2212_f2021/group11.git
 
-		add(metricsList);
-		
 		JLabel intervalLabel = new JLabel("        Choose interval: ");
 
 		Vector<String> intervalNames = new Vector<String>();

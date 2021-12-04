@@ -16,8 +16,7 @@ import org.jfree.data.Range;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import cryptoAnalyzer.Strategies.Result;
-import cryptoAnalyzer.demoClasses.Date;
-import cryptoAnalyzer.demoClasses.Selection;
+import cryptoAnalyzer.selection.*;
 import cryptoAnalyzer.gui.MainUINew;
 
 /**
@@ -77,7 +76,7 @@ public class BarChartViewer extends Viewer{
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		for(int i=1; i<row; i++) {
 			for(int j=1; j<col; j++) {
-				Date d = (Date)result[0][j];
+				Dates d = (Dates)result[0][j];
 				dataset.setValue((double)result[i][j], result[i][0].toString(), d.printString());
 			}
 		}
