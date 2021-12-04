@@ -137,6 +137,7 @@ public class MainUINew extends JFrame implements ActionListener{
 				Date selectedDate = (Date) picker.getModel().getValue();
 				select.setStartDate(selectedDate);
 				
+<<<<<<< HEAD
 				//d = new Dates();
 				//d = new Dates(selectedDate.getDate(), selectedDate.getMonth() + 1, selectedDate.getYear() + 1900);
 				//d.setDay(selectedDate.getDate());
@@ -150,6 +151,13 @@ public class MainUINew extends JFrame implements ActionListener{
 				for(int i=0; i<d.length; i++) {
 					System.out.println(d[i].printInt());
 				}
+=======
+				//Selection sel = new Selection();
+				int dates = selectedDate.getDate();
+				int m = selectedDate.getMonth() + 1;
+				int y = selectedDate.getYear() + 1900;
+				Dates d = new Dates(dates, m, y);
+>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 				System.out.println(selectedDate.toString());
 			}
 		});
@@ -200,8 +208,14 @@ public class MainUINew extends JFrame implements ActionListener{
 				JComboBox<String> combo = (JComboBox<String>) event.getSource();
 				String selectedInterval = combo.getSelectedItem().toString();
 				
+//<<<<<<< HEAD
 				Frequency f = new Frequency(selectedInterval.toString());
 				select.setFreq(f);
+//=======
+				//f = new Frequency();
+				//f.setFreq(selectedInterval.toString());
+				Frequency freq = new Frequency(selectedInterval.toString());
+//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 				System.out.println(selectedInterval.toString());
 			}
 		});

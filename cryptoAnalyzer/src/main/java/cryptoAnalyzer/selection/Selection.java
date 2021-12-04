@@ -1,12 +1,16 @@
 package cryptoAnalyzer.selection;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
 /***
  * 
- * @author Yeonsil Choi
+ * @author Yeonsil Choi; Nicole Ni
  *
  */
 public class Selection {
@@ -23,19 +27,27 @@ public class Selection {
 	
 	private static Selection instance = null;
 	
+	private Selection() {
+		//perform instance initializations
+	}
+	
 	/***
 	 * singleton
 	 * @return
 	 */
 	public static Selection getInstance() {
 		if (instance == null) {
+//<<<<<<< HEAD
+//=======
+			//if there is no previous instance, create one
+//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 			instance = new Selection();
 		}
 		return instance;
 	}
 
 	/***
-	 * 
+	 * Getting method of geting frequency
 	 * @return 
 	 */
 	public Frequency getFreq() {
@@ -48,7 +60,7 @@ public class Selection {
 	
 
 	/***
-	 * 
+	 * Getting method of getting analysis type
 	 * @return 
 	 */
 	public String getAnalysisType() {
@@ -56,6 +68,7 @@ public class Selection {
 		
 	}
 	
+//<<<<<<< HEAD
 	public void setAnalysisType(String at) {
 		analysisType = at;
 	}
@@ -76,8 +89,8 @@ public class Selection {
 	}
 	
 	public void addCrypto(Cryptocurrency crypto) {
-
-		if(cryptoIsAvailable(crypto)) {
+try {
+		if(checkAvailability(crypto.getName())) {
 			String name = crypto.getName();
 			if(cryptoName==null) {
 				cryptoName = new String[]{crypto.getName()};
@@ -101,7 +114,10 @@ public class Selection {
 			}
 		}else {
 			JOptionPane.showMessageDialog(null, "Cryptocurrency is not available");
-		}
+		}}
+catch(IOException e) {
+	JOptionPane.showMessageDialog(null, "Unavailable list is not found");
+}
 		
 	}
 	
@@ -197,7 +213,7 @@ public class Selection {
 			dates = newArr;
 		}
 	}
-	
+	/*
 	private Boolean cryptoIsAvailable(Cryptocurrency c) {
 		String name = c.getName();
 		for(int i=0; i< unavailable.length; i++) {
@@ -206,7 +222,7 @@ public class Selection {
 			}
 		}
 		return true;
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		Cryptocurrency c = new Cryptocurrency("Bitcoin");
@@ -230,14 +246,17 @@ public class Selection {
 	}
 
 	
+//=======
+//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 	/**
-	 * 
+	 * Getting method of geting dates
 	 * @param d
 	 */
 /*
 	public CryptoDate[] getDates() {	
 		//get selected date		
 		Calendar selected = Calendar.getInstance();
+		selected.set(d.getYear(), d.getMonth(), d.getDay());
 		selected.getTime();
 		System.out.println(selected.getTime());
 		
@@ -324,10 +343,32 @@ public class Selection {
 			return null;
 		}
 		return dates;
-
-
+	}
+	*/
+	
+	/**
+	 * This is a class that checks if the selected crypto is allowed to be fetched
+	 */
+	public boolean checkAvailability(String c) throws FileNotFoundException {
+		BufferedReader inFile = new BufferedReader(new FileReader("notavailablecrypto.txt"));
+		try {
+			StringBuilder sb = new StringBuilder();
+			String line = inFile.readLine();
+			while(line != null) { // while the end of the file hasn't been reached
+				if (line.equals(c)) {
+					return false; // the selected crypto is not allowed to be fetched
+				}
+				line = inFile.readLine();
+			}
+			inFile.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return true;
+		
 	}
 	
-	*/
+	
 	
 }
