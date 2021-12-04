@@ -217,6 +217,7 @@ public class MainUINew extends JFrame implements ActionListener{
 				//Frequency freq = new Frequency(selectedInterval.toString());
 //>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 				System.out.println(selectedInterval.toString());
+				
 			}
 		});
 		JPanel south = new JPanel();

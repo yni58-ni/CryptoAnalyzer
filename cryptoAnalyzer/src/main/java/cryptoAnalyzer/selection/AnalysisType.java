@@ -32,4 +32,5 @@ public class AnalysisType {
 	public void setType(String newType) {
 		this.type = newType;
 	}
+	
 }

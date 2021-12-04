@@ -10,7 +10,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 /***
  * 
- * @author Yeonsil Choi; Nicole Ni
+ * @author Yeonsil Choi; Nicole Ni; Grace Zhu
  *
  */
 public class Selection {
