@@ -65,7 +65,7 @@ public class Result {
 	 * @param date date
 	 * @param col the column the date is located
 	 */
-	public void setDate(Dates date, int col) {
+	public void setDate(CryptoDate date, int col) {
 		res[0][col] = date;
 	}
 	

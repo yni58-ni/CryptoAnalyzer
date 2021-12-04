@@ -21,9 +21,9 @@ public class PerVolumeStrategy extends Strategy{
 		DataFetcher dFetcher = new DataFetcher();
 		
 		int numRow = sel.getNames().length;
-		int numCol = sel.getDates().length-1;
+		int numCol = sel.getDateList().length-1;
 		String[] cryptoList = sel.getNames();
-		Dates[] dateList = sel.getDates();
+		CryptoDate[] dateList = sel.getDateList();
 		
 		Result res = new Result(numRow,numCol);
 
@@ -41,7 +41,7 @@ public class PerVolumeStrategy extends Strategy{
 					}else {
 						String cName = ((String) res.getResult()[i][0]).toLowerCase(); //name of crypto
 						String prevDate = dateList[j-1].printInt(); //previous date
-						String curDate = ((Dates) res.getResult()[0][j]).printInt(); //current date
+						String curDate = ((CryptoDate) res.getResult()[0][j]).printInt(); //current date
 						
 						double prevValue = dFetcher.getVolumeForCoin(cName, prevDate);
 						double curValue = dFetcher.getVolumeForCoin(cName, curDate);

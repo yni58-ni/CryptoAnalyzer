@@ -22,9 +22,9 @@ public class MarketCapStrategy extends Strategy{
 		DataFetcher dFetcher = new DataFetcher();
 		
 		int numRow = sel.getNames().length;
-		int numCol = sel.getDates().length;
+		int numCol = sel.getDateList().length;
 		String[] cryptoList = sel.getNames();
-		Dates[] dateList = sel.getDates();
+		CryptoDate[] dateList = sel.getDateList();
 		
 		Result res = new Result(numRow,numCol);
 
@@ -40,7 +40,7 @@ public class MarketCapStrategy extends Strategy{
 						res.setCryptoName(cryptoList[i-1], i); //first column is list of crypto
 					}else {
 						String cName = ((String) res.getResult()[i][0]).toLowerCase();
-						String cDate = ((Dates) res.getResult()[0][j]).printInt();
+						String cDate = ((CryptoDate) res.getResult()[0][j]).printInt();
 						double value = dFetcher.getMarketCapForCoin(cName, cDate);
 						res.setValues(value, i, j); //add value to result
 					}
