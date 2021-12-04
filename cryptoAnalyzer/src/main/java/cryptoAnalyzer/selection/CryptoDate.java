@@ -1,10 +1,16 @@
 package cryptoAnalyzer.selection;
+
+import java.util.Calendar;
+import java.util.Date;
+
+//import java.sql.Date;
+
 /***
  * 
  * @author Yeonsil Choi
  *
  */
-public class Dates {
+public class CryptoDate {
 
 	private int day;
 	private int month;
@@ -12,7 +18,7 @@ public class Dates {
 	private String[] months= {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
 	
 
-	public Dates(int d, int m, int y) {
+	public CryptoDate(int d, int m, int y) {
 		day = d;
 		month = m;
 		year = y;

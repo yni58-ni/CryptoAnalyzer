@@ -33,7 +33,8 @@ import cryptoAnalyzer.Strategies.AnalysisFactory;
 import cryptoAnalyzer.Strategies.AnalysisServerFacade;
 import cryptoAnalyzer.Strategies.Result;
 import cryptoAnalyzer.Strategies.Strategy;
-import cryptoAnalyzer.selection.Dates;
+import cryptoAnalyzer.selection.CryptoDate;
+import cryptoAnalyzer.selection.Cryptocurrency;
 import cryptoAnalyzer.selection.Frequency;
 import cryptoAnalyzer.selection.Selection;
 import cryptoAnalyzer.utils.AvailableCryptoList;
@@ -55,7 +56,7 @@ public class MainUINew extends JFrame implements ActionListener{
 	
 	// Should be a reference to a separate object in actual implementation
 	private List<String> selectedList;
-////	private Selection select;
+	private Selection select;
 	
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
@@ -81,7 +82,7 @@ public class MainUINew extends JFrame implements ActionListener{
 		cryptoList = new JComboBox<String>(cryptoNames);
 		
 		selectedList = new ArrayList<>();
-////		select = new Selection();
+		select = Selection.getInstance();
 		
 		JButton addCrypto = new JButton("+");
 		addCrypto.setActionCommand("add");
@@ -134,6 +135,7 @@ public class MainUINew extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent event) {
 				JDatePanelImpl picker = (JDatePanelImpl) event.getSource();
 				Date selectedDate = (Date) picker.getModel().getValue();
+				select.setStartDate(selectedDate);
 				
 				//d = new Dates();
 				//d = new Dates(selectedDate.getDate(), selectedDate.getMonth() + 1, selectedDate.getYear() + 1900);
@@ -144,7 +146,10 @@ public class MainUINew extends JFrame implements ActionListener{
 				//System.out.println(d.getDay());
 				//System.out.println(d.getMonth());
 				//System.out.println(d.getYear());
-				
+				CryptoDate[] d = select.getDateList();
+				for(int i=0; i<d.length; i++) {
+					System.out.println(d[i].printInt());
+				}
 				System.out.println(selectedDate.toString());
 			}
 		});
@@ -173,6 +178,7 @@ public class MainUINew extends JFrame implements ActionListener{
 				JComboBox<String> combo = (JComboBox<String>) event.getSource();
 				String selectedMetric = combo.getSelectedItem().toString();
 
+				select.setAnalysisType(selectedMetric);
 				System.out.println(selectedMetric.toString());
 			}
 		});
@@ -194,8 +200,8 @@ public class MainUINew extends JFrame implements ActionListener{
 				JComboBox<String> combo = (JComboBox<String>) event.getSource();
 				String selectedInterval = combo.getSelectedItem().toString();
 				
-				//f = new Frequency();
-				//f.setFreq(selectedInterval.toString());
+				Frequency f = new Frequency(selectedInterval.toString());
+				select.setFreq(f);
 				System.out.println(selectedInterval.toString());
 			}
 		});
@@ -255,7 +261,7 @@ public class MainUINew extends JFrame implements ActionListener{
 			stats.removeAll();
 			
 			
-			Selection sel =  new Selection();
+			Selection sel =  Selection.getInstance();
 
 			AnalysisServerFacade server = new AnalysisServerFacade();
 			server.performAnalysis(sel);
@@ -268,6 +274,17 @@ public class MainUINew extends JFrame implements ActionListener{
 				text += crypto + "\n";
 			
 			selectedCryptoList.setText(text);
+			
+			Cryptocurrency cc = new Cryptocurrency(cryptoList.getSelectedItem().toString());
+			select.addCrypto(cc);
+			
+			String[] sArr = select.getNames();
+			System.out.println("---");
+			for(int i=0;i<sArr.length;i++) {
+				System.out.println(sArr[i]);
+			}
+			System.out.println("---");
+			
 		} else if ("remove".equals(command)) {
 			selectedList.remove(cryptoList.getSelectedItem());
 			String text = "";
@@ -275,6 +292,19 @@ public class MainUINew extends JFrame implements ActionListener{
 				text += crypto + "\n";
 			
 			selectedCryptoList.setText(text);
+			
+			Cryptocurrency c = new Cryptocurrency(cryptoList.getSelectedItem().toString());
+			System.out.println(c.getName());
+			select.removeCrypto(c);
+			
+			String[] sArr = select.getNames();
+			if(sArr!=null) {
+				System.out.println("---");
+				for(int i=0;i<sArr.length;i++) {
+					System.out.println(sArr[i]);
+				}
+				System.out.println("---");
+			}
 		}
 	}
 }

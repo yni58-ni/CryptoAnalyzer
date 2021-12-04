@@ -24,7 +24,7 @@ public class PerPriceStrategy extends Strategy {
 		int numRow = sel.getNames().length;
 		int numCol = sel.getDates().length-1;
 		String[] cryptoList = sel.getNames();
-		Dates[] dateList = sel.getDates();
+		CryptoDate[] dateList = sel.getDates();
 		
 		Result res = new Result(numRow,numCol);
 
@@ -42,7 +42,7 @@ public class PerPriceStrategy extends Strategy {
 					}else {
 						String cName = ((String) res.getResult()[i][0]).toLowerCase(); //name of crypto
 						String prevDate = dateList[j-1].printInt(); //previous date
-						String curDate = ((Dates) res.getResult()[0][j]).printInt(); //current date
+						String curDate = ((CryptoDate) res.getResult()[0][j]).printInt(); //current date
 						
 						double prevValue = dFetcher.getPriceForCoin(cName, prevDate);
 						double curValue = dFetcher.getPriceForCoin(cName, curDate);

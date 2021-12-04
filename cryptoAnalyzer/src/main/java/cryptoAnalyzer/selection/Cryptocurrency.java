@@ -39,5 +39,13 @@ public class Cryptocurrency {
 		//newName = cryptoList.getSelectedItem().toString();
 		this.name = newName;
 	}
+	
+	public Boolean isEqual(Cryptocurrency c) {
+		if(this.getName().equals(c.getName())) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 }

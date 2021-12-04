@@ -89,7 +89,7 @@ public class ScatterChartViewer extends Viewer{
 			String s = result[i][0]+" - "+select.getAnalysisType();
 			TimeSeries series = new TimeSeries(s);
 			for(int j=1; j<col; j++) {
-				Dates d = (Dates)result[0][j];
+				CryptoDate d = (CryptoDate)result[0][j];
 				series.add(new Day(d.getDay(),d.getMonth(),d.getYear()),(double)result[i][j]);
 				
 			}
