@@ -55,7 +55,7 @@ public class AnalysisServerFacade {
 			str = "Cryptocurrencies are not selected.";
 
 		}
-		else if(sel.getDates()==null) {
+		else if(sel.getDateList()==null) {
 
 			str = "Start date is not selected.";
 		}

@@ -76,7 +76,7 @@ public class TableViewer extends Viewer{
 			if(i==0) {
 				columnNames[i] = result[0][i];
 			}else {
-				columnNames[i] = ((Dates)(result[0][i])).printString();
+				columnNames[i] = ((CryptoDate)(result[0][i])).printString();
 			}
 			
 		}		

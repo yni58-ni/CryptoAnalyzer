@@ -76,7 +76,7 @@ public class BarChartViewer extends Viewer{
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		for(int i=1; i<row; i++) {
 			for(int j=1; j<col; j++) {
-				Dates d = (Dates)result[0][j];
+				CryptoDate d = (CryptoDate)result[0][j];
 				dataset.setValue((double)result[i][j], result[i][0].toString(), d.printString());
 			}
 		}

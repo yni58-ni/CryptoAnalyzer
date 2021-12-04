@@ -24,7 +24,7 @@ public class PriceStrategy extends Strategy{
 		int numRow = sel.getNames().length;
 		int numCol = sel.getDates().length;
 		String[] cryptoList = sel.getNames();
-		Dates[] dateList = sel.getDates();
+		CryptoDate[] dateList = sel.getDates();
 		
 		Result res = new Result(numRow,numCol);
 
@@ -40,7 +40,7 @@ public class PriceStrategy extends Strategy{
 						res.setCryptoName(cryptoList[i-1], i); //first column is list of crypto
 					}else {
 						String cName = ((String) res.getResult()[i][0]).toLowerCase();
-						String cDate = ((Dates) res.getResult()[0][j]).printInt();
+						String cDate = ((CryptoDate) res.getResult()[0][j]).printInt();
 						double value = dFetcher.getPriceForCoin(cName, cDate);
 						value = Math.round(value*100);
 						res.setValues(value/100, i, j);
