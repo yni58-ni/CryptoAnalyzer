@@ -251,7 +251,7 @@ public class MainUINew extends JFrame implements ActionListener{
 			stats.removeAll();
 			
 			
-			Selection sel =  new Selection();
+			Selection sel =  Selection.getInstance();
 
 			AnalysisServerFacade server = new AnalysisServerFacade();
 			server.performAnalysis(sel);
