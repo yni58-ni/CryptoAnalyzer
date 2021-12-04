@@ -167,13 +167,13 @@ public class Selection {
 	/**
 	 * This is a class that checks if the selected crypto is allowed to be fetched
 	 */
-	public boolean checkAvailability(Cryptocurrency c) {
+	public boolean checkAvailability(String c) {
 		BufferedReader inFile = new BufferedReader(new FileReader("notavailablecrypto.txt"));
 		try {
 			StringBuilder sb = new StringBuilder();
 			String line = inFile.readLine();
 			while(line != null) { // while the end of the file hasn't been reached
-				if (line.equals(c.getName())) {
+				if (line.equals(c)) {
 					return false; // the selected crypto is not allowed to be fetched
 				}
 				line = inFile.readLine();
@@ -185,7 +185,6 @@ public class Selection {
 		}
 		return true;
 		
-	}
 	}
 	
 }
