@@ -6,12 +6,17 @@ package cryptoAnalyzer.selection;
  */
 public class Dates {
 
-	static int day;
-	static int month;
-	static int year;
+	private int day;
+	private int month;
+	private int year;
 	private String[] months= {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
 	
 
+	public Dates(int d, int m, int y) {
+		day = d;
+		month = m;
+		year = y;
+	}
 
 	
  	/***

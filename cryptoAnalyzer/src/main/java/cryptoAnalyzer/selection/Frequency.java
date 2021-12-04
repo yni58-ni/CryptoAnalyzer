@@ -6,13 +6,16 @@ package cryptoAnalyzer.selection;
  */
 public class Frequency {
 	
-	static String freq;
+	private String freq;
 	
 	/***
 	 * 
 	 * @param f
 	 */
-	
+	public Frequency(String f) {
+		freq = f;
+		
+	}
 	
 	/***
 	 * 

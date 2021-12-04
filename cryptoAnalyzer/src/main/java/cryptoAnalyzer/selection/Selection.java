@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 
-import cryptoAnalyzer.selection.*;
+import cryptoAnalyzer.selection.Dates;
 import cryptoAnalyzer.gui.MainUINew;
 
 /***
@@ -28,10 +28,9 @@ public class Selection {
 	private Cryptocurrency c;
 	private String[] cryptoName;
 	private Dates[] dates;
-	private static Frequency freq = new Frequency();
+	private Frequency freq;
 	private String analysisType;
-	private JComboBox<String> cryptoList;
-	private static Dates d = new Dates();
+	private Dates d;
 	
 	private static Selection instance = null;
 	
@@ -51,7 +50,7 @@ public class Selection {
 	 * @return 
 	 */
 	public Frequency getFreq() {
-		return freq;		
+		return freq;	
 	}
 	
 
@@ -90,126 +89,97 @@ public class Selection {
 	 * 
 	 * @param d
 	 */
-	public Dates[] getDates() {
-		
-		//get selected date
-		int selectedD, selectedM, selectedY;
-		selectedD = d.getDay();
-		selectedM = d.getMonth();
-		selectedY = d.getYear();
-		
-		//save them
+	public Dates[] getDates() {	
+		//get selected date		
 		Calendar selected = Calendar.getInstance();
-		selected.set(selectedY, selectedM, selectedD);
+		selected.getTime();
+		System.out.println(selected.getTime());
 		
+		//selected date
+
 		
-		//current 
-		Calendar cal = Calendar.getInstance();
+		//get current date
+		Calendar cur = Calendar.getInstance();
 		
 		//get the number of days between two dates
-		long end = cal.getTimeInMillis();
+		long end = cur.getTimeInMillis();
 		long start = selected.getTimeInMillis();
 		long days = TimeUnit.MILLISECONDS.toDays(Math.abs(end - start));
-		//System.out.println(days);
 		
-		//System.out.println(selected.getTime());
-		//System.out.println(cal.getTime());
+		//check if selected date is not a future date
+		//if current > selected -> 1
+		//if current < selected -> -1
+		//dates = new Dates[(int) (days + 1)];
+		//dates[0] = d;
 		
-		
-		//System.out.println(freq.getFreq());
-		String selectedFreq = freq.getFreq();
-		
-		
-		
-		/***
-		 * dec 5 2021 - select
-		 * dec 7 2021 - current
-		 * arr0 = 1205 arr1 = 1206 arr2 = 1207
-		 */
-		
-		//if cureent > selected -> 1
-		//if currentdate < selected -> -1
-		System.out.print(cal.compareTo(selected));
-		
-		if(cal.compareTo(selected) > 0) {
-			if (selectedFreq == "Daily") {
-				dates = new Dates[(int) (days+1)];
+		if (cur.compareTo(selected) > 0) {
+			if (freq.getFreq() == "Daily") {
+				dates = new Dates[(int) (days + 1)];
 				for (int i = 0; i < days; i++) {
-					selected.add(selected.DATE, i);
-					//datearr[i] = Dates(selected.getDay);
+					selected.add(Calendar.DATE, i);
+					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[i] = d;
+				}
+				//return dates;
+			}else if (freq.getFreq() == "Weekly") {
+				int index = (int) (days / 7);
+				dates = new Dates[index + 1];
+				if (index == 0) {
+					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[0] = d;
+					//return dates;
+ 				} else if (index > 0) {
+ 					//int n = 0;
+					for (int i = 0; i < index + 1; i++) {
+						selected.add(Calendar.WEEK_OF_MONTH, i);
+						d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						dates[i] = d;
+						//n += 7;
+					}
+					//return dates;
+ 				}
+				
+			}else if (freq.getFreq() == "Monthly") {
+				int index = (int) (days / 30);
+				dates = new Dates[index + 1];
+				if (index == 0) {
+					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[0] = d;
+					//return dates;
+				} else if (index > 0) {
+ 					//int n = 0;
+					for (int i = 0; i < index + 1; i++) {
+						selected.add(Calendar.MONTH, i);
+						d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						dates[i] = d;
+						//n += 7;
+					}
+					//return dates;				
+				}
+			}else if (freq.getFreq() == "Yearly") {
+				int index = (int) (days / 365);
+				dates = new Dates[index + 1];
+				if (index == 0) {
+					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					dates[0] = d;
+					//return dates;
+				} else if (index > 0) {
+					for (int i = 0; i < index + 1; i++) {
+						selected.add(Calendar.MONTH, i);
+						d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						dates[i] = d;
+						//n += 7;
+					}
+					//return dates;
 				}
 				
-			} else if (selectedFreq == "Weekly") {
-				
-			} else if (selectedFreq == "Monthly") {
-				
-			} else if (selectedFreq == "Yearly") {
-				
 			}
-		} else {
+		} else if (cur.compareTo(selected) < 0){
 			return null;
 		}
-		//if (selectedY > mYear) {
 		return dates;
-			
-		//}
-		
-		
-		//d.getDay();
-		
-		//System.out.println(d.getMonth());
-		//System.out.println(d.getDay());
-		//System.out.println(d.getYear());
-		
-		
-		//System.out.println(d.getDay());
-		//mYear = cal.get(Calendar.YEAR);
-		//System.out.println(mYear);
-		//mMonth = cal.get(Calendar.MONTH);
-		//january = 0
-		//System.out.println(mMonth + 1);
-		//mDay = cal.get(Calendar.DATE);
-		//mDay1 = cal.get(Calendar.DAY_OF_MONTH);
-		//System.out.println(mDay);
-		//System.out.println(mDay1);
-		
 
-		
-				
-	}
-	
 
-	
-	
-	
-	private Boolean checkAvailability(Cryptocurrency c) throws FileNotFoundException {
-		BufferedReader inFile = new BufferedReader(new FileReader("notavailablecrypto.txt"));
-		boolean flag;
-		try {
-			StringBuilder sb = new StringBuilder();
-			String line = inFile.readLine();
-			while(line != null) {
-				if (line.equals(c.getName())) {
-					
-				}
-			}
-			
-			inFile.close();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-		
-		
 	}
-	
-	public static void main(String[] args) {
-		//Cryptocurrency c = new Cryptocurrency();
-		//checkAvailability(c.getName());
-	}
-	
-	
-	
 	
 }

@@ -19,7 +19,7 @@ public class Cryptocurrency {
 	 */
 	public Cryptocurrency(String n) {
 		//n = cryptoList.getSelectedItem().toString();
-		n = String.valueOf(cryptoList.getSelectedItem());
+		//n = String.valueOf(cryptoList.getSelectedItem());
 		this.name = n;
 	}
 	
