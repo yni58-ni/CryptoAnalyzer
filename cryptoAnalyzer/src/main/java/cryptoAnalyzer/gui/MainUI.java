@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import javax.swing.JComponent;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -28,6 +30,7 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import cryptoAnalyzer.selection.Selection;
 import cryptoAnalyzer.utils.AvailableCryptoList;
 import cryptoAnalyzer.utils.DataVisualizationCreator;
 
@@ -49,6 +52,7 @@ public class MainUI extends JFrame implements ActionListener{
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
 	private Selection selection;
+	private Selection selection = new Selection();
 
 	public static MainUI getInstance() {
 		if (instance == null)
@@ -197,18 +201,23 @@ public class MainUI extends JFrame implements ActionListener{
 			DataVisualizationCreator creator = new DataVisualizationCreator();
 			creator.createCharts();
 		} else if ("add".equals(command)) {
-			if(selection.checkAvailability == true) { //when the selected one is allowed to be fetched
-				selectedList.add(cryptoList.getSelectedItem().toString());
-				String text = "";
-				for (String crypto: selectedList)
-					text += crypto + "\n";
-				
-				selectedCryptoList.setText(text);
+			String a = cryptoList.getSelectedItem().toString();
+			try {
+				if(selection.checkAvailability(a)) { //when selected on is allowed to be fetched
+					selectedList.add(cryptoList.getSelectedItem().toString());
+					String text = "";
+					for (String crypto: selectedList)
+						text += crypto + "\n";
+					
+					selectedCryptoList.setText(text);
+				}
+				else {
+					JOptionPane.showMessageDialog(this, "Invalid Cryptocurrency");
+				}
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			else {
-				JOptionPane.showMessageDialog(frame, "The crypto cannot be fetched!");
-			}
-			
 		} else if ("remove".equals(command)) {
 			selectedList.remove(cryptoList.getSelectedItem());
 			String text = "";
