@@ -20,7 +20,7 @@ import cryptoAnalyzer.gui.MainUINew;
 
 /***
  * 
- * @author Yeonsil Choi
+ * @author Yeonsil Choi; Nicole Ni
  *
  */
 public class Selection {
@@ -53,7 +53,7 @@ public class Selection {
 	}
 
 	/***
-	 * 
+	 * Getting method of geting frequency
 	 * @return 
 	 */
 	public Frequency getFreq() {
@@ -62,7 +62,7 @@ public class Selection {
 	
 
 	/***
-	 * 
+	 * Getting method of getting analysis type
 	 * @return 
 	 */
 	public String getAnalysisType() {
@@ -70,30 +70,8 @@ public class Selection {
 		
 	}
 	
-
-	/***
-	 * 
-	 * @return 
-	 */
-	public String[] getNames() {
-		//String n = String.valueOf(cryptoList.getSelectedItem());
-		//MainUINew ui = new MainUINew();
-		String[] arr = {"Bitcoin", "Solana"};
-		
-		return arr;
-	}
-	
-	public void addCrypto(Cryptocurrency crypto) {
-
-	}
-	
-	public void removeCrypto(Cryptocurrency crypto) {
-		
-	}
-	
-	
 	/**
-	 * 
+	 * Getting method of geting dates
 	 * @param d
 	 */
 	public Dates[] getDates() {	
@@ -193,8 +171,29 @@ public class Selection {
 			return null;
 		}
 		return dates;
-
-
+	}
+	
+	/**
+	 * This is a class that checks if the selected crypto is allowed to be fetched
+	 */
+	public boolean checkAvailability(String c) throws FileNotFoundException {
+		BufferedReader inFile = new BufferedReader(new FileReader("notavailablecrypto.txt"));
+		try {
+			StringBuilder sb = new StringBuilder();
+			String line = inFile.readLine();
+			while(line != null) { // while the end of the file hasn't been reached
+				if (line.equals(c)) {
+					return false; // the selected crypto is not allowed to be fetched
+				}
+				line = inFile.readLine();
+			}
+			inFile.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return true;
+		
 	}
 	
 }
