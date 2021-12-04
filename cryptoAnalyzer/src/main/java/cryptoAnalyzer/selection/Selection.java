@@ -34,13 +34,18 @@ public class Selection {
 	
 	private static Selection instance = null;
 	
+	private Selection() {
+		//perform instance initializations
+	}
+	
 	/***
 	 * singleton
 	 * @return
 	 */
 	public static Selection getInstance() {
 		if (instance == null) {
-			instance = Selection.getInstance();
+			//if there is no previous instance, create one
+			instance = new Selection();
 		}
 		return instance;
 	}
@@ -92,6 +97,7 @@ public class Selection {
 	public Dates[] getDates() {	
 		//get selected date		
 		Calendar selected = Calendar.getInstance();
+		selected.set(d.getYear(), d.getMonth(), d.getDay());
 		selected.getTime();
 		System.out.println(selected.getTime());
 		

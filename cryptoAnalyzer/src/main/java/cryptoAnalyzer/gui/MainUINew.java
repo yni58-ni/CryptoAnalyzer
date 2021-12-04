@@ -135,16 +135,11 @@ public class MainUINew extends JFrame implements ActionListener{
 				JDatePanelImpl picker = (JDatePanelImpl) event.getSource();
 				Date selectedDate = (Date) picker.getModel().getValue();
 				
-				//d = new Dates();
-				//d = new Dates(selectedDate.getDate(), selectedDate.getMonth() + 1, selectedDate.getYear() + 1900);
-				//d.setDay(selectedDate.getDate());
-				//d.setMon(selectedDate.getMonth());
-				//d.setYear(selectedDate.getYear() + 1900);
-
-				//System.out.println(d.getDay());
-				//System.out.println(d.getMonth());
-				//System.out.println(d.getYear());
-				
+				//Selection sel = new Selection();
+				int dates = selectedDate.getDate();
+				int m = selectedDate.getMonth() + 1;
+				int y = selectedDate.getYear() + 1900;
+				Dates d = new Dates(dates, m, y);
 				System.out.println(selectedDate.toString());
 			}
 		});
@@ -196,6 +191,7 @@ public class MainUINew extends JFrame implements ActionListener{
 				
 				//f = new Frequency();
 				//f.setFreq(selectedInterval.toString());
+				Frequency freq = new Frequency(selectedInterval.toString());
 				System.out.println(selectedInterval.toString());
 			}
 		});
