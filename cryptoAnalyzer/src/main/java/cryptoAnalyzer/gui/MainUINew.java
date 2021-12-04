@@ -55,12 +55,15 @@ public class MainUINew extends JFrame implements ActionListener{
 	
 	// Should be a reference to a separate object in actual implementation
 	private List<String> selectedList;
-////	private Selection select;
+	////	private Selection select;
 	
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
 	
-	//private static Dates d;
+	public static Dates d;
+	public static Calendar select;
+	public Frequency freq;
+	private int dates, m, y;
 	//private static Frequency f;
 
 	public static MainUINew getInstance() {
@@ -135,11 +138,22 @@ public class MainUINew extends JFrame implements ActionListener{
 				JDatePanelImpl picker = (JDatePanelImpl) event.getSource();
 				Date selectedDate = (Date) picker.getModel().getValue();
 				
+				d = new Dates(0,0,0);
 				//Selection sel = new Selection();
-				int dates = selectedDate.getDate();
-				int m = selectedDate.getMonth() + 1;
-				int y = selectedDate.getYear() + 1900;
-				Dates d = new Dates(dates, m, y);
+				dates = selectedDate.getDate();
+				System.out.println(dates);
+				m = selectedDate.getMonth() + 1;
+				System.out.println(m);
+				y = selectedDate.getYear() + 1900;
+				System.out.println(y);
+				//d = new Dates(0,0,0);
+				d.setDay(dates);
+				d.setMon(m);
+				d.setYear(y);
+				System.out.println(d);
+				
+				select = Calendar.getInstance();
+				select.set(y, m, dates);
 				System.out.println(selectedDate.toString());
 			}
 		});
@@ -191,7 +205,7 @@ public class MainUINew extends JFrame implements ActionListener{
 				
 				//f = new Frequency();
 				//f.setFreq(selectedInterval.toString());
-				Frequency freq = new Frequency(selectedInterval.toString());
+				freq = new Frequency(selectedInterval.toString());
 				System.out.println(selectedInterval.toString());
 			}
 		});

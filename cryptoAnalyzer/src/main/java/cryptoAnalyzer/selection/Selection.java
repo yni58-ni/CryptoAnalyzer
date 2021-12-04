@@ -30,7 +30,9 @@ public class Selection {
 	private Dates[] dates;
 	private Frequency freq;
 	private String analysisType;
-	private Dates d;
+	public Dates d;
+	public Calendar select;
+	
 	
 	private static Selection instance = null;
 	
@@ -95,11 +97,18 @@ public class Selection {
 	 * @param d
 	 */
 	public Dates[] getDates() {	
+		//Dates d = new Dates(d.getDay(), d.getMonth(), d.getYear());
+		
+		System.out.println(d);
 		//get selected date		
-		Calendar selected = Calendar.getInstance();
-		selected.set(d.getYear(), d.getMonth(), d.getDay());
-		selected.getTime();
-		System.out.println(selected.getTime());
+		
+		//System.out.println(d.getDay());
+		//System.out.println(d.getMonth());
+		//System.out.println(d.getDay());
+		select.getTime();
+		select.set(d.getYear(), d.getMonth() + 1, d.getDay() + 1900);
+		select.getTime();
+		System.out.println(select.getTime());
 		
 		//selected date
 
@@ -109,7 +118,7 @@ public class Selection {
 		
 		//get the number of days between two dates
 		long end = cur.getTimeInMillis();
-		long start = selected.getTimeInMillis();
+		long start = select.getTimeInMillis();
 		long days = TimeUnit.MILLISECONDS.toDays(Math.abs(end - start));
 		
 		//check if selected date is not a future date
@@ -118,12 +127,12 @@ public class Selection {
 		//dates = new Dates[(int) (days + 1)];
 		//dates[0] = d;
 		
-		if (cur.compareTo(selected) > 0) {
+		if (cur.compareTo(select) > 0) {
 			if (freq.getFreq() == "Daily") {
 				dates = new Dates[(int) (days + 1)];
 				for (int i = 0; i < days; i++) {
-					selected.add(Calendar.DATE, i);
-					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					select.add(Calendar.DATE, i);
+					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
 					dates[i] = d;
 				}
 				//return dates;
@@ -131,14 +140,14 @@ public class Selection {
 				int index = (int) (days / 7);
 				dates = new Dates[index + 1];
 				if (index == 0) {
-					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
 					dates[0] = d;
 					//return dates;
  				} else if (index > 0) {
  					//int n = 0;
 					for (int i = 0; i < index + 1; i++) {
-						selected.add(Calendar.WEEK_OF_MONTH, i);
-						d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						select.add(Calendar.WEEK_OF_MONTH, i);
+						d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
 						dates[i] = d;
 						//n += 7;
 					}
@@ -149,14 +158,14 @@ public class Selection {
 				int index = (int) (days / 30);
 				dates = new Dates[index + 1];
 				if (index == 0) {
-					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
 					dates[0] = d;
 					//return dates;
 				} else if (index > 0) {
  					//int n = 0;
 					for (int i = 0; i < index + 1; i++) {
-						selected.add(Calendar.MONTH, i);
-						d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						select.add(Calendar.MONTH, i);
+						d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
 						dates[i] = d;
 						//n += 7;
 					}
@@ -166,13 +175,13 @@ public class Selection {
 				int index = (int) (days / 365);
 				dates = new Dates[index + 1];
 				if (index == 0) {
-					d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+					d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
 					dates[0] = d;
 					//return dates;
 				} else if (index > 0) {
 					for (int i = 0; i < index + 1; i++) {
-						selected.add(Calendar.YEAR, i);
-						d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
+						select.add(Calendar.YEAR, i);
+						d = new Dates(select.getTime().getDate(), select.getTime().getMonth(), select.getTime().getYear());
 						dates[i] = d;
 						//n += 7;
 					}
@@ -180,7 +189,7 @@ public class Selection {
 				}
 				
 			}
-		} else if (cur.compareTo(selected) < 0){
+		} else if (cur.compareTo(select) < 0){
 			return null;
 		}
 		return dates;
