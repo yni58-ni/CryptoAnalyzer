@@ -48,6 +48,7 @@ public class MainUI extends JFrame implements ActionListener{
 	
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
+	private Selection selection;
 
 	public static MainUI getInstance() {
 		if (instance == null)
@@ -196,12 +197,18 @@ public class MainUI extends JFrame implements ActionListener{
 			DataVisualizationCreator creator = new DataVisualizationCreator();
 			creator.createCharts();
 		} else if ("add".equals(command)) {
-			selectedList.add(cryptoList.getSelectedItem().toString());
-			String text = "";
-			for (String crypto: selectedList)
-				text += crypto + "\n";
+			if(selection.checkAvailability == true) { //when the selected one is allowed to be fetched
+				selectedList.add(cryptoList.getSelectedItem().toString());
+				String text = "";
+				for (String crypto: selectedList)
+					text += crypto + "\n";
+				
+				selectedCryptoList.setText(text);
+			}
+			else {
+				JOptionPane.showMessageDialog(frame, "The crypto cannot be fetched!");
+			}
 			
-			selectedCryptoList.setText(text);
 		} else if ("remove".equals(command)) {
 			selectedList.remove(cryptoList.getSelectedItem());
 			String text = "";
