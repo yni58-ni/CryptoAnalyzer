@@ -60,6 +60,13 @@ public class Selection {
 		return freq;	
 	}
 	
+	/***
+	 * 
+	 * @return cryptoName
+	 */
+	public String[] getNames() {
+		return cryptoName;
+	}
 
 	/***
 	 * Getting method of getting analysis type

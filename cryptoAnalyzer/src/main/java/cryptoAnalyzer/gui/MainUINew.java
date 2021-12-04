@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import javax.swing.JComponent;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -266,18 +268,29 @@ public class MainUINew extends JFrame implements ActionListener{
 			
 			
 			Selection sel =  Selection.getInstance();
-
 			AnalysisServerFacade server = new AnalysisServerFacade();
 			server.performAnalysis(sel);
 			
 			
 		} else if ("add".equals(command)) {
-			selectedList.add(cryptoList.getSelectedItem().toString());
-			String text = "";
-			for (String crypto: selectedList)
-				text += crypto + "\n";
-			
-			selectedCryptoList.setText(text);
+			String a = cryptoList.getSelectedItem().toString();
+			Selection selection = Selection.getInstance();
+			try {
+				if(selection.checkAvailability(a)) { //when selected on is allowed to be fetched
+					selectedList.add(cryptoList.getSelectedItem().toString());
+					String text = "";
+					for (String crypto: selectedList)
+						text += crypto + "\n";
+					
+					selectedCryptoList.setText(text);
+				}
+				else {
+					JOptionPane.showMessageDialog(this, "Invalid Cryptocurrency");
+				}
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		} else if ("remove".equals(command)) {
 			selectedList.remove(cryptoList.getSelectedItem());
 			String text = "";
