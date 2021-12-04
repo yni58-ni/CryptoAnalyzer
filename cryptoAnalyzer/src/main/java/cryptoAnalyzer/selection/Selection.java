@@ -167,7 +167,7 @@ public class Selection {
 	/**
 	 * This is a class that checks if the selected crypto is allowed to be fetched
 	 */
-	public boolean checkAvailability(String c) {
+	public boolean checkAvailability(String c) throws FileNotFoundException {
 		BufferedReader inFile = new BufferedReader(new FileReader("notavailablecrypto.txt"));
 		try {
 			StringBuilder sb = new StringBuilder();
