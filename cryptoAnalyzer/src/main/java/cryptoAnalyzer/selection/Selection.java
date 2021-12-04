@@ -32,95 +32,101 @@ public class Selection {
 	}
 	
 	/***
-	 * singleton
-	 * @return
+	 * Singleton
+	 * @return instance
 	 */
 	public static Selection getInstance() {
 		if (instance == null) {
-//<<<<<<< HEAD
-//=======
-			//if there is no previous instance, create one
-//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 			instance = new Selection();
 		}
 		return instance;
 	}
 
 	/***
-	 * Getting method of geting frequency
-	 * @return 
+	 * to get frequency
+	 * @return freq
 	 */
 	public Frequency getFreq() {
 		return freq;	
 	}
 	
+	/***
+	 * to set frequency
+	 * @param f
+	 */
 	public void setFreq(Frequency f) {
 		freq = f;
 	}
 	
 
 	/***
-	 * Getting method of getting analysis type
-	 * @return 
+	 * method for getting analysis type
+	 * @return analysisType
 	 */
 	public String getAnalysisType() {
 		return analysisType;
 		
 	}
 	
-//<<<<<<< HEAD
+	/***
+	 * method for setting analysisType
+	 * @param at
+	 */
 	public void setAnalysisType(String at) {
 		analysisType = at;
 	}
 	
 
 	/***
-	 * 
-	 * @return 
+	 * to get list of Cryptocurrency names
+	 * @return cryptoName
 	 */
 	public String[] getNames() {
-		//String n = String.valueOf(cryptoList.getSelectedItem());
-		//MainUINew ui = new MainUINew();
-		/*
-		String[] arr = {"Bitcoin", "Solana"};
-		
-		return arr;*/
+
 		return cryptoName;
 	}
 	
+	/***
+	 * to add Cryptocurrency into array
+	 * @param crypto
+	 */
 	public void addCrypto(Cryptocurrency crypto) {
-try {
-		if(checkAvailability(crypto.getName())) {
-			String name = crypto.getName();
-			if(cryptoName==null) {
-				cryptoName = new String[]{crypto.getName()};
-			}else {
-				String[] newArr = new String[cryptoName.length+1];
-				Boolean duplicate = false;
-				
-				for(int i=0; i<cryptoName.length; i++) {
-					if(cryptoName[i].equals(name)) {
-						duplicate = true;
+		try {
+				if(checkAvailability(crypto.getName())) {
+					String name = crypto.getName();
+					if(cryptoName==null) {
+						cryptoName = new String[]{crypto.getName()};
 					}else {
-						newArr[i] = cryptoName[i];
+						String[] newArr = new String[cryptoName.length+1];
+						Boolean duplicate = false;
+						
+						for(int i=0; i<cryptoName.length; i++) {
+							if(cryptoName[i].equals(name)) {
+								duplicate = true;
+							}else {
+								newArr[i] = cryptoName[i];
+							}
+						}
+						if(duplicate) {
+							//do nothing
+						}else {
+							newArr[cryptoName.length] = name;
+							cryptoName = newArr;
+						}
 					}
-				}
-				if(duplicate) {
-					//do nothing
 				}else {
-					newArr[cryptoName.length] = name;
-					cryptoName = newArr;
-				}
-			}
-		}else {
-			JOptionPane.showMessageDialog(null, "Cryptocurrency is not available");
-		}}
-catch(IOException e) {
-	JOptionPane.showMessageDialog(null, "Unavailable list is not found");
-}
+					JOptionPane.showMessageDialog(null, "Cryptocurrency is not available");
+				}}
+		catch(IOException e) {
+			JOptionPane.showMessageDialog(null, "Unavailable list is not found");
+		}
 		
 	}
 	
+	/***
+	 * to remove cryptocurrency from the list
+	 * @param crypto
+	 */
 	public void removeCrypto(Cryptocurrency crypto) {
 		
 		String name = crypto.getName();
@@ -158,9 +164,11 @@ catch(IOException e) {
 		}
 	}
 	
+	/***
+	 * to set start date
+	 * @param d
+	 */
 	public void setStartDate(Date d) {
-		//CryptoDate = new CryptoDate(d.getDay(), d.getMonth(), d.getYear());
-		//calendar.setTime(d);
 		Date curDate = Calendar.getInstance().getTime();
 		
 		if(d.after(curDate)) {
@@ -170,13 +178,21 @@ catch(IOException e) {
 		}
 	}
 	
-	
+	/***
+	 * to get date list
+	 * @return dates
+	 */
 	public CryptoDate[] getDateList() {
 		Date curDate = Calendar.getInstance().getTime();
 		calculateDate(startDate, curDate);
 		return dates;
 	}
 	
+	/***
+	 * to calculate dates between two dates
+	 * @param sDate
+	 * @param curDate
+	 */
 	private void calculateDate(Date sDate, Date curDate) {
 		Calendar start = Calendar.getInstance();
 		start.setTime(sDate);
@@ -199,6 +215,10 @@ catch(IOException e) {
 		
 	}
 	
+	/***
+	 * to add date into crypto date list
+	 * @param cd
+	 */
 	private void addDate(CryptoDate cd) {
 
 		if(dates==null) {
@@ -213,16 +233,32 @@ catch(IOException e) {
 			dates = newArr;
 		}
 	}
-	/*
-	private Boolean cryptoIsAvailable(Cryptocurrency c) {
-		String name = c.getName();
-		for(int i=0; i< unavailable.length; i++) {
-			if(unavailable[i].equals(name)) {
-				return false;
+	
+	/***
+	 * This is a class that checks if the selected crypto is allowed to be fetched
+	 * @param c
+	 * @return
+	 * @throws FileNotFoundException
+	 */
+	public boolean checkAvailability(String c) throws FileNotFoundException {
+		BufferedReader inFile = new BufferedReader(new FileReader("notavailablecrypto.txt"));
+		try {
+			StringBuilder sb = new StringBuilder();
+			String line = inFile.readLine();
+			while(line != null) { // while the end of the file hasn't been reached
+				if (line.equals(c)) {
+					return false; // the selected crypto is not allowed to be fetched
+				}
+				line = inFile.readLine();
 			}
+			inFile.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return true;
-	}*/
+		
+	}
 	
 	public static void main(String[] args) {
 		Cryptocurrency c = new Cryptocurrency("Bitcoin");
@@ -242,131 +278,6 @@ catch(IOException e) {
 		sel.setStartDate(dt);
 		sel.setFreq(new Frequency("Daily"));;
 		sel.getDateList();
-		
-	}
-	
-
-	
-//=======
-//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
-	/**
-	 * Getting method of geting dates
-	 * @param d
-	 */
-/*
-	public CryptoDate[] getDates() {	
-		//get selected date		
-		Calendar selected = Calendar.getInstance();
-		selected.set(d.getYear(), d.getMonth(), d.getDay());
-		selected.getTime();
-		System.out.println(selected.getTime());
-		
-		//selected date
-
-		
-		//get current date
-		Calendar cur = Calendar.getInstance();
-		
-		//get the number of days between two dates
-		long end = cur.getTimeInMillis();
-		long start = selected.getTimeInMillis();
-		long days = TimeUnit.MILLISECONDS.toDays(Math.abs(end - start));
-		
-		//check if selected date is not a future date
-		//if current > selected -> 1
-		//if current < selected -> -1
-		//dates = new Dates[(int) (days + 1)];
-		//dates[0] = d;
-		
-		if (cur.compareTo(selected) > 0) {
-			if (freq.getFreq() == "Daily") {
-				dates = new CryptoDate[(int) (days + 1)];
-				for (int i = 0; i < days; i++) {
-					selected.add(Calendar.DATE, i);
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
-					dates[i] = d;
-				}
-				//return dates;
-			}else if (freq.getFreq() == "Weekly") {
-				int index = (int) (days / 7);
-				dates = new CryptoDate[index + 1];
-				if (index == 0) {
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
-					dates[0] = d;
-					//return dates;
- 				} else if (index > 0) {
- 					//int n = 0;
-					for (int i = 0; i < index + 1; i++) {
-						selected.add(Calendar.WEEK_OF_MONTH, i);
-						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
-						dates[i] = d;
-						//n += 7;
-					}
-					//return dates;
- 				}
-				
-			}else if (freq.getFreq() == "Monthly") {
-				int index = (int) (days / 30);
-				dates = new CryptoDate[index + 1];
-				if (index == 0) {
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
-					dates[0] = d;
-					//return dates;
-				} else if (index > 0) {
- 					//int n = 0;
-					for (int i = 0; i < index + 1; i++) {
-						selected.add(Calendar.MONTH, i);
-						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
-						dates[i] = d;
-						//n += 7;
-					}
-					//return dates;				
-				}
-			}else if (freq.getFreq() == "Yearly") {
-				int index = (int) (days / 365);
-				dates = new CryptoDate[index + 1];
-				if (index == 0) {
-					d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
-					dates[0] = d;
-					//return dates;
-				} else if (index > 0) {
-					for (int i = 0; i < index + 1; i++) {
-						selected.add(Calendar.YEAR, i);
-						d = new CryptoDate(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
-						dates[i] = d;
-						//n += 7;
-					}
-					//return dates;
-				}
-				
-			}
-		} else if (cur.compareTo(selected) < 0){
-			return null;
-		}
-		return dates;
-	}
-	*/
-	
-	/**
-	 * This is a class that checks if the selected crypto is allowed to be fetched
-	 */
-	public boolean checkAvailability(String c) throws FileNotFoundException {
-		BufferedReader inFile = new BufferedReader(new FileReader("notavailablecrypto.txt"));
-		try {
-			StringBuilder sb = new StringBuilder();
-			String line = inFile.readLine();
-			while(line != null) { // while the end of the file hasn't been reached
-				if (line.equals(c)) {
-					return false; // the selected crypto is not allowed to be fetched
-				}
-				line = inFile.readLine();
-			}
-			inFile.close();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return true;
 		
 	}
 	
