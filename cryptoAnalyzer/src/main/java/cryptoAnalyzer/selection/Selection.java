@@ -165,7 +165,7 @@ public class Selection {
 					//return dates;
 				} else if (index > 0) {
 					for (int i = 0; i < index + 1; i++) {
-						selected.add(Calendar.MONTH, i);
+						selected.add(Calendar.YEAR, i);
 						d = new Dates(selected.getTime().getDate(), selected.getTime().getMonth(), selected.getTime().getYear());
 						dates[i] = d;
 						//n += 7;
