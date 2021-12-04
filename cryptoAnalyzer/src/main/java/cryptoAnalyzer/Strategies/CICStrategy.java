@@ -22,9 +22,9 @@ public class CICStrategy extends Strategy{
 		DataFetcher dFetcher = new DataFetcher(); 
 		
 		int numRow = sel.getNames().length; 
-		int numCol = sel.getDates().length;
+		int numCol = sel.getDateList().length;
 		String[] cryptoList = sel.getNames(); //list of cryptocurrencies
-		CryptoDate[] dateList = sel.getDates(); //list of dates which data needs to be fetched
+		CryptoDate[] dateList = sel.getDateList(); //list of dates which data needs to be fetched
 		
 		Result res = new Result(numRow,numCol); //initialize result
 

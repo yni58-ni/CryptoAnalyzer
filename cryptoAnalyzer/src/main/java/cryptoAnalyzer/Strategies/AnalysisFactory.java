@@ -13,28 +13,28 @@ public class AnalysisFactory {
 	 * @return corresponding strategy
 	 */
 	public Strategy create(String analysis) {
-		if(analysis.equals("price")) {
+		if(analysis.equals("Price")) {
 			return new PriceStrategy();
 		
-		}else if(analysis.equals("marCap")) {
+		}else if(analysis.equals("MarketCap")) {
 			return new MarketCapStrategy();
 		
-		}else if(analysis.equals("volume")) {
+		}else if(analysis.equals("Volume")) {
 			return new VolumeStrategy();
 		
-		}else if(analysis.equals("CIC")) {
+		}else if(analysis.equals("Coins in Circulation")) {
 			return new CICStrategy();
 		
-		}else if(analysis.equals("perPrice")) {
+		}else if(analysis.equals("Percent Change of Price")) {
 			return new PerPriceStrategy();
 		
-		}else if(analysis.equals("perMarCap")) {
+		}else if(analysis.equals("Percent Change of MarketCap")) {
 			return new PerMarketCapStrategy();
 		
-		}else if(analysis.equals("perVol")) {
+		}else if(analysis.equals("Percent Change of Volume")) {
 			return new PerVolumeStrategy();
 		
-		}else if(analysis.equals("perCIC")) {
+		}else if(analysis.equals("Percent Change of Coins in Circulation")) {
 			return new PerCICStrategy();
 		}else {
 			return null;

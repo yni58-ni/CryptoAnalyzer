@@ -22,9 +22,9 @@ public class VolumeStrategy extends Strategy{
 		DataFetcher dFetcher = new DataFetcher();
 		
 		int numRow = sel.getNames().length;
-		int numCol = sel.getDates().length;
+		int numCol = sel.getDateList().length;
 		String[] cryptoList = sel.getNames();
-		CryptoDate[] dateList = sel.getDates();
+		CryptoDate[] dateList = sel.getDateList();
 		
 		Result res = new Result(numRow,numCol);
 

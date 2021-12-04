@@ -21,8 +21,8 @@ public class Selection {
 	private Frequency freq;
 	private String analysisType;
 	private Date startDate;
-	private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
-			"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
+	//private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
+	//		"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
 	//private Calendar calendar;
 	
 	private static Selection instance = null;

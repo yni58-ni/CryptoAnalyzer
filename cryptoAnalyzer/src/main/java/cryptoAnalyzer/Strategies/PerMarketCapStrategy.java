@@ -22,9 +22,9 @@ public class PerMarketCapStrategy extends Strategy{
 		DataFetcher dFetcher = new DataFetcher();
 		
 		int numRow = sel.getNames().length;
-		int numCol = sel.getDates().length-1;
+		int numCol = sel.getDateList().length-1;
 		String[] cryptoList = sel.getNames();
-		CryptoDate[] dateList = sel.getDates();
+		CryptoDate[] dateList = sel.getDateList();
 		
 		Result res = new Result(numRow,numCol);
 

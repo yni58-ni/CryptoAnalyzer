@@ -147,10 +147,10 @@ public class MainUINew extends JFrame implements ActionListener{
 				//System.out.println(d.getDay());
 				//System.out.println(d.getMonth());
 				//System.out.println(d.getYear());
-				CryptoDate[] d = select.getDateList();
-				for(int i=0; i<d.length; i++) {
-					System.out.println(d[i].printInt());
-				}
+				//CryptoDate[] d = select.getDateList();
+				//for(int i=0; i<d.length; i++) {
+				//	System.out.println(d[i].printInt());
+				//}
 //=======
 				//Selection sel = new Selection();
 	//			int dates = selectedDate.getDate();
@@ -173,11 +173,11 @@ public class MainUINew extends JFrame implements ActionListener{
 		metricsNames.add("Price");
 		metricsNames.add("MarketCap");
 		metricsNames.add("Volume");
-		metricsNames.add("Coins in circulation");
+		metricsNames.add("Coins in Circulation");
 		metricsNames.add("Percent Change of Price");
 		metricsNames.add("Percent Change of MarketCap");
 		metricsNames.add("Percent Change of Volume");
-		metricsNames.add("Percent Change of Coins in circulation");
+		metricsNames.add("Percent Change of Coins in Circulation");
 		JComboBox<String> metricsList = new JComboBox<String>(metricsNames);
 		metricsList.addActionListener(new ActionListener() {
 
