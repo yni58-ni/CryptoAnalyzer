@@ -47,8 +47,8 @@ public class PerVolumeStrategy extends Strategy{
 						double curValue = dFetcher.getVolumeForCoin(cName, curDate);
 						double value = (curValue-prevValue)/prevValue *100;
 						
-						value = Math.round(value*100);
-						res.setValues(value/100, i, j);
+						value = Math.round(value*10000);
+						res.setValues(value/10000, i, j);
 					}
 				}
 			}	

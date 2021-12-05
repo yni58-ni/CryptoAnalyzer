@@ -166,7 +166,6 @@ public class MainUINew extends JFrame implements ActionListener{
 				String selectedMetric = combo.getSelectedItem().toString();
 
 				select.setAnalysisType(selectedMetric);
-				//System.out.println(selectedMetric.toString());
 			}
 		});
 	
@@ -190,7 +189,6 @@ public class MainUINew extends JFrame implements ActionListener{
 				
 				Frequency f = new Frequency(selectedInterval.toString());
 				select.setFreq(f);
-				//System.out.println(selectedInterval.toString());
 				
 			}
 		});
@@ -267,13 +265,6 @@ public class MainUINew extends JFrame implements ActionListener{
 					
 					Cryptocurrency cc = new Cryptocurrency(cryptoList.getSelectedItem().toString());
 					select.addCrypto(cc);
-					
-					//String[] sArr = select.getNames();
-					//System.out.println("---");
-					//for(int i=0;i<sArr.length;i++) {
-					//	System.out.println(sArr[i]);
-					//}
-					//System.out.println("---");
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Cryptocurrency is not available");
@@ -291,18 +282,7 @@ public class MainUINew extends JFrame implements ActionListener{
 			selectedCryptoList.setText(text);
 			
 			Cryptocurrency c = new Cryptocurrency(cryptoList.getSelectedItem().toString());
-			//System.out.println(c.getName());
 			select.removeCrypto(c);
-			/*
-			String[] sArr = select.getNames();
-			if(sArr!=null) {
-				System.out.println("---");
-				for(int i=0;i<sArr.length;i++) {
-					System.out.println(sArr[i]);
-				}
-				System.out.println("---");
-			}
-			*/
 		}
 	}
 	

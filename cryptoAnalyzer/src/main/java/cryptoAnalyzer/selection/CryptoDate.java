@@ -77,7 +77,7 @@ public class CryptoDate {
 	}
 	
 	/***
-	 * to print date
+	 * to print date; in form of 01-Sept
 	 * @return date
 	 */
 	public String printString() {
@@ -89,11 +89,10 @@ public class CryptoDate {
 	}
 
 	/***
-	 * to print date
+	 * to print date; in form of 13-09-2021
 	 * @return date
 	 */
 	public String printInt() {
-		//13-09-2021
 		if(month<10) {
 			if(day<10) {
 				return "0"+day+"-0"+month+"-"+year;

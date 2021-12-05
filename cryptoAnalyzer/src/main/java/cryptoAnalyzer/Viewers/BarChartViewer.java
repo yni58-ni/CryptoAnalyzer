@@ -88,7 +88,6 @@ public class BarChartViewer extends Viewer{
 		plot.setRenderer(0, barrenderer1);
 		CategoryAxis domainAxis = new CategoryAxis("Date");
 		plot.setDomainAxis(domainAxis);
-		//String at = select.getAnalysisType();
 		if(select.getAnalysisType().equals("Price")) {
 			LogAxis rangeAxis = new LogAxis("Price(CAD)");
 			rangeAxis.setRange(new Range(1.0, 70000.0));

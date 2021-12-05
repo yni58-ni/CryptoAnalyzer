@@ -42,7 +42,9 @@ public class MarketCapStrategy extends Strategy{
 						String cName = ((String) res.getResult()[i][0]).toLowerCase();
 						String cDate = ((CryptoDate) res.getResult()[0][j]).printInt();
 						double value = dFetcher.getMarketCapForCoin(cName, cDate);
-						res.setValues(value, i, j); //add value to result
+						
+						value = Math.round(value*10000);
+						res.setValues(value/10000, i, j); //add value to result
 					}
 				}
 			}	

@@ -110,8 +110,7 @@ public class TableViewer extends Viewer{
 						s = s + (double) Math.round(db*10000)/10000;
 					}
 					data[i-1][j] = s;
-					
-					//data[i-1][j] = result[i][j].toString();
+
 				}
 			}
 		}

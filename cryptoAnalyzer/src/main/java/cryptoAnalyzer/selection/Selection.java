@@ -20,20 +20,7 @@ public class Selection {
 	private Frequency freq = null;
 	private String analysisType = null;
 	private Date startDate = null;
-//<<<<<<< HEAD
-	//private Boolean needResetDateList = false;
-	//private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
-	//		"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
-	//private Calendar calendar;
-	
-//=======
-	//private Boolean needResetDateList = false;
-//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 	private static Selection instance = null;
-	
-	private Selection() {
-		//perform instance initializations
-	}
 	
 	/***
 	 * Singleton
@@ -97,14 +84,14 @@ public class Selection {
 	 */
 	public void addCrypto(Cryptocurrency crypto) {
 		try {
-				if(checkAvailability(crypto.getName())) {
+				if(checkAvailability(crypto.getName())) { //check if available
 					String name = crypto.getName();
-					if(cryptoName==null) {
+					if(cryptoName==null) { //empty list
 						cryptoName = new String[]{crypto.getName()};
 					}else {
 						String[] newArr = new String[cryptoName.length+1];
 						Boolean duplicate = false;
-						
+						//check duplicate
 						for(int i=0; i<cryptoName.length; i++) {
 							if(cryptoName[i].equals(name)) {
 								duplicate = true;
@@ -121,11 +108,10 @@ public class Selection {
 					}
 				}else {
 					JOptionPane.showMessageDialog(null, "Cryptocurrency is not available");
-				}}
-		catch(IOException e) {
-			JOptionPane.showMessageDialog(null, "Unavailable list is not found");
-		}
-		
+				}
+			}catch(IOException e) {
+				JOptionPane.showMessageDialog(null, "Unavailable list is not found");
+			}
 	}
 	
 	/***
@@ -138,21 +124,22 @@ public class Selection {
 		if(cryptoName==null) {
 			//do nothing
 		}else {
-			//String[] newArr = new String[cryptoName.length];
+			//check if crypto is in list
 			Boolean notInList = true;
 			for(int i=0; i<cryptoName.length; i++) {
 				if(cryptoName[i].equals(name)) {
 					notInList = false;
 					cryptoName[i]=null;
-					//newArr[curr] = cryptoName[i+1];
 				}
 			}
 			if(notInList) {
 				//do nothing
 			}else {
+				//if only one crypto
 				if(cryptoName.length==1) {
 					cryptoName = null;
 				}else {
+					//remove the crypto
 					String[] newArr = new String[cryptoName.length-1];
 					int newIndex = 0;
 					for(int i=0; i<cryptoName.length; i++) {
@@ -160,7 +147,6 @@ public class Selection {
 							
 							newArr[newIndex]=cryptoName[i];
 							newIndex++;
-							//newArr[curr] = cryptoName[i+1];
 						}
 					}
 					cryptoName = newArr;
@@ -180,7 +166,6 @@ public class Selection {
 			JOptionPane.showMessageDialog(null, "Select date before current date");
 		}else {
 			startDate = d;
-			//needResetDateList = true;
 		}
 	}
 	
@@ -193,12 +178,11 @@ public class Selection {
 	 * @return dates
 	 */
 	public CryptoDate[] getDateList() {
-		//if(needResetDateList == true) {
-			dates = null;
-			Date curDate = Calendar.getInstance().getTime();
-			calculateDate(startDate, curDate);
-			//needResetDateList = false;
-		//}
+
+		dates = null;
+		Date curDate = Calendar.getInstance().getTime();
+		calculateDate(startDate, curDate);
+
 		return dates;
 	}
 	
@@ -211,11 +195,13 @@ public class Selection {
 		dates = null;
 		Calendar start = Calendar.getInstance();
 		start.setTime(sDate);
-		//System.out.println(start);
+		
+		//while start date is before current date
 		while(!(start.getTime()).after(curDate)) {
 			CryptoDate cd = new CryptoDate(start.get(Calendar.DATE), start.get(Calendar.MONTH)+1, start.get(Calendar.YEAR));
 			addDate(cd);
 			
+			//add date according to interval
 			if(freq.getInterval().equals("Daily")) {
 				start.add(Calendar.DATE, 1);
 			}else if(freq.getInterval().equals("Weekly")) {
@@ -248,29 +234,6 @@ public class Selection {
 			dates = newArr;
 		}
 	}
-
-	/*
-	public static void main(String[] args) {
-		Cryptocurrency c = new Cryptocurrency("Bitcoin");
-		Cryptocurrency c1 = new Cryptocurrency("Dodge");
-		Cryptocurrency c2 = new Cryptocurrency("Solana");
-		Cryptocurrency c3 = new Cryptocurrency("Ethereum");
-		Selection sel = Selection.getInstance();
-		//sel.addCrypto(c);
-		//sel.addCrypto(c1);
-		//sel.addCrypto(c2);
-		//sel.addCrypto(c3);
-		sel.removeCrypto(c);
-		
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE,-3);
-		Date dt= cal.getTime();
-		sel.setStartDate(dt);
-		sel.setFreq(new Frequency("Daily"));;
-		sel.getDateList();
-		
-	}*/
-	
 	
 	/***
 	 * This is a class that checks if the selected crypto is allowed to be fetched

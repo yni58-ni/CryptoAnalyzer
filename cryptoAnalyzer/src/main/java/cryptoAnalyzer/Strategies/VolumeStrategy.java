@@ -42,7 +42,9 @@ public class VolumeStrategy extends Strategy{
 						String cName = ((String) res.getResult()[i][0]).toLowerCase();
 						String cDate = ((CryptoDate) res.getResult()[0][j]).printInt();
 						double value = dFetcher.getVolumeForCoin(cName, cDate);
-						res.setValues(value, i, j);
+						
+						value = Math.round(value*10000);
+						res.setValues(value/10000, i, j);
 					}
 				}
 			}	
