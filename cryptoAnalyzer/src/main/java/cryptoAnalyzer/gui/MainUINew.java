@@ -232,14 +232,14 @@ public class MainUINew extends JFrame implements ActionListener{
 	}
 
 	
-
+/*
 	public static void main(String[] args) {
 		JFrame frame = MainUINew.getInstance();
 		frame.setSize(900, 600);
 		frame.pack();
 		frame.setVisible(true);
 	}
-
+*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
