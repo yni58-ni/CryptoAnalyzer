@@ -21,7 +21,7 @@ public class Frequency {
 	 * 
 	 * @return this.freq
 	 */
-	public String getFreq() {
+	public String getInterval() {
 		return this.freq;
 	}
 	

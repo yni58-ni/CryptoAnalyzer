@@ -24,7 +24,6 @@ public class CryptoDate {
 		year = y;
 	}
 
-	
  	/***
 	 * 
 	 * @return this.day

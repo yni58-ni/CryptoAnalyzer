@@ -49,4 +49,5 @@ public class VolumeStrategy extends Strategy{
 		}
 		return res;		
 	}
+	
 }

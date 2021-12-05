@@ -229,5 +229,4 @@ public class MainUI extends JFrame implements ActionListener{
 		}
 	}
 
-
 }

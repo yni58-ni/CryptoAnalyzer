@@ -16,13 +16,14 @@ import javax.swing.JOptionPane;
 public class Selection {
 	
 	//private Cryptocurrency[] cryptos;
-	private String[] cryptoName;
-	private CryptoDate[] dates;
-	private Frequency freq;
-	private String analysisType;
-	private Date startDate;
-	private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
-			"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
+	private String[] cryptoName = null;
+	private CryptoDate[] dates = null;
+	private Frequency freq = null;
+	private String analysisType = null;
+	private Date startDate = null;
+	private Boolean needResetDateList = false;
+	//private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
+	//		"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
 	//private Calendar calendar;
 	
 	private static Selection instance = null;
@@ -175,7 +176,12 @@ public class Selection {
 			JOptionPane.showMessageDialog(null, "Select date before current date");
 		}else {
 			startDate = d;
+			needResetDateList = true;
 		}
+	}
+	
+	public Date getStartDate() {
+		return startDate;
 	}
 	
 	/***
@@ -183,8 +189,12 @@ public class Selection {
 	 * @return dates
 	 */
 	public CryptoDate[] getDateList() {
-		Date curDate = Calendar.getInstance().getTime();
-		calculateDate(startDate, curDate);
+		if(needResetDateList == true) {
+			dates = null;
+			Date curDate = Calendar.getInstance().getTime();
+			calculateDate(startDate, curDate);
+			needResetDateList = false;
+		}
 		return dates;
 	}
 	
@@ -201,11 +211,11 @@ public class Selection {
 			CryptoDate cd = new CryptoDate(start.get(Calendar.DATE), start.get(Calendar.MONTH)+1, start.get(Calendar.YEAR));
 			addDate(cd);
 			
-			if(freq.getFreq().equals("Daily")) {
+			if(freq.getInterval().equals("Daily")) {
 				start.add(Calendar.DATE, 1);
-			}else if(freq.getFreq().equals("Weekly")) {
+			}else if(freq.getInterval().equals("Weekly")) {
 				start.add(Calendar.DATE, 7);
-			}else if(freq.getFreq().equals("Monthly")) {
+			}else if(freq.getInterval().equals("Monthly")) {
 				start.add(Calendar.MONTH, 1);
 			}else {
 				start.add(Calendar.YEAR, 1);

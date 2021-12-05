@@ -102,13 +102,13 @@ public class LineChartViewer extends Viewer{
 		plot.setRenderer(0, splinerenderer1);
 		DateAxis domainAxis = new DateAxis("");
 		plot.setDomainAxis(domainAxis);
-		if(select.getAnalysisType().toLowerCase().equals("price")) {
+		if(select.getAnalysisType().equals("Price")) {
 			plot.setRangeAxis(new LogAxis("Price(CAD)"));
 		}else {
 			plot.setRangeAxis(new LogAxis(select.getAnalysisType()));
 		}
 		
-		JFreeChart chart = new JFreeChart(select.getFreq()+" "+select.getAnalysisType()+" Line Chart", new Font("Serif", java.awt.Font.BOLD, 18), plot,
+		JFreeChart chart = new JFreeChart(select.getFreq().getInterval()+" "+select.getAnalysisType()+" Line Chart", new Font("Serif", java.awt.Font.BOLD, 18), plot,
 				true);
 
 		ChartPanel chartPanel = new ChartPanel(chart);

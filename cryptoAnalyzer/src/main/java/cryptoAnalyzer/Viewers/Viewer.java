@@ -34,5 +34,4 @@ public abstract class Viewer {
 	protected void update(Selection newSel, Result newRes) {
 		
 	}
-	
 }
