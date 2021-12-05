@@ -1,10 +1,10 @@
-LINK
-e-Radix
-ECOMI
-Huobi Token
-Decred
-NEXO
-NEM
-Marinade staked SOL
-Qtum
-loTex
+link
+e-radix
+true-usd
+huobi-token
+decred
+nexo
+nem
+msol
+frax
+osmosis

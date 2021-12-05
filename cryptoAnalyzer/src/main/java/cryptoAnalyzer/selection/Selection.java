@@ -21,7 +21,7 @@ public class Selection {
 	private Frequency freq = null;
 	private String analysisType = null;
 	private Date startDate = null;
-	private Boolean needResetDateList = false;
+	//private Boolean needResetDateList = false;
 	//private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
 	//		"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
 	//private Calendar calendar;
@@ -56,6 +56,7 @@ public class Selection {
 	 * @param f
 	 */
 	public void setFreq(Frequency f) {
+		
 		freq = f;
 	}
 	
@@ -176,7 +177,7 @@ public class Selection {
 			JOptionPane.showMessageDialog(null, "Select date before current date");
 		}else {
 			startDate = d;
-			needResetDateList = true;
+			//needResetDateList = true;
 		}
 	}
 	
@@ -189,12 +190,12 @@ public class Selection {
 	 * @return dates
 	 */
 	public CryptoDate[] getDateList() {
-		if(needResetDateList == true) {
+		//if(needResetDateList == true) {
 			dates = null;
 			Date curDate = Calendar.getInstance().getTime();
 			calculateDate(startDate, curDate);
-			needResetDateList = false;
-		}
+			//needResetDateList = false;
+		//}
 		return dates;
 	}
 	
@@ -204,6 +205,7 @@ public class Selection {
 	 * @param curDate
 	 */
 	private void calculateDate(Date sDate, Date curDate) {
+		dates = null;
 		Calendar start = Calendar.getInstance();
 		start.setTime(sDate);
 		System.out.println(start);

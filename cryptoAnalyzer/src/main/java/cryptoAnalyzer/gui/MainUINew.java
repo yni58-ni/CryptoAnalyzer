@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import javax.swing.JComponent;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -286,22 +288,31 @@ public class MainUINew extends JFrame implements ActionListener{
 			
 			
 		} else if ("add".equals(command)) {
-			selectedList.add(cryptoList.getSelectedItem().toString());
-			String text = "";
-			for (String crypto: selectedList)
-				text += crypto + "\n";
-			
-			selectedCryptoList.setText(text);
-			
-			Cryptocurrency cc = new Cryptocurrency(cryptoList.getSelectedItem().toString());
-			select.addCrypto(cc);
-			
-			String[] sArr = select.getNames();
-			System.out.println("---");
-			for(int i=0;i<sArr.length;i++) {
-				System.out.println(sArr[i]);
+			try {
+				if(select.checkAvailability(cryptoList.getSelectedItem().toString())) {
+					selectedList.add(cryptoList.getSelectedItem().toString());
+					String text = "";
+					for (String crypto: selectedList)
+						text += crypto + "\n";
+					
+					selectedCryptoList.setText(text);
+					
+					Cryptocurrency cc = new Cryptocurrency(cryptoList.getSelectedItem().toString());
+					select.addCrypto(cc);
+					
+					String[] sArr = select.getNames();
+					System.out.println("---");
+					for(int i=0;i<sArr.length;i++) {
+						System.out.println(sArr[i]);
+					}
+					System.out.println("---");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Cryptocurrency is not available");
+				}
+			}catch (IOException ioe) {
+				ioe.printStackTrace();
 			}
-			System.out.println("---");
 			
 		} else if ("remove".equals(command)) {
 			selectedList.remove(cryptoList.getSelectedItem());
