@@ -86,7 +86,7 @@ public class ScatterChartViewer extends Viewer{
 			
 		TimeSeriesCollection dataset = new TimeSeriesCollection();
 		for(int i=1; i<row; i++) {
-			String s = result[i][0]+" - "+select.getAnalysisType();
+			String s = result[i][0]+" - "+select.getFreq().getInterval();
 			TimeSeries series = new TimeSeries(s);
 			for(int j=1; j<col; j++) {
 				CryptoDate d = (CryptoDate)result[0][j];

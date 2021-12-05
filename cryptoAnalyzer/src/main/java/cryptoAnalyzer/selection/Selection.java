@@ -27,7 +27,7 @@ public class Selection {
 	//private Calendar calendar;
 	
 //=======
-	private Boolean needResetDateList = false;
+	//private Boolean needResetDateList = false;
 //>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 	private static Selection instance = null;
 	
@@ -211,7 +211,7 @@ public class Selection {
 		dates = null;
 		Calendar start = Calendar.getInstance();
 		start.setTime(sDate);
-		System.out.println(start);
+		//System.out.println(start);
 		while(!(start.getTime()).after(curDate)) {
 			CryptoDate cd = new CryptoDate(start.get(Calendar.DATE), start.get(Calendar.MONTH)+1, start.get(Calendar.YEAR));
 			addDate(cd);
@@ -249,7 +249,7 @@ public class Selection {
 		}
 	}
 
-	
+	/*
 	public static void main(String[] args) {
 		Cryptocurrency c = new Cryptocurrency("Bitcoin");
 		Cryptocurrency c1 = new Cryptocurrency("Dodge");
@@ -269,7 +269,7 @@ public class Selection {
 		sel.setFreq(new Frequency("Daily"));;
 		sel.getDateList();
 		
-	}
+	}*/
 	
 	
 	/***
