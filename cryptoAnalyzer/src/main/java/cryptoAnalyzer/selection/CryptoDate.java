@@ -3,8 +3,6 @@ package cryptoAnalyzer.selection;
 import java.util.Calendar;
 import java.util.Date;
 
-//import java.sql.Date;
-
 /***
  * 
  * @author Yeonsil Choi
@@ -18,6 +16,12 @@ public class CryptoDate {
 	private String[] months= {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
 	
 
+	/***
+	 * constructor
+	 * @param d
+	 * @param m
+	 * @param y
+	 */
 	public CryptoDate(int d, int m, int y) {
 		day = d;
 		month = m;
@@ -25,7 +29,7 @@ public class CryptoDate {
 	}
 
  	/***
-	 * 
+	 * getting day
 	 * @return this.day
 	 */
 	public int getDay() {
@@ -33,7 +37,7 @@ public class CryptoDate {
 	}
 	
 	/***
-	 * 
+	 * setting day
 	 * @param newDay
 	 */
 	public void setDay(int newDay) {
@@ -41,7 +45,7 @@ public class CryptoDate {
 	}
 	
 	/***
-	 * 
+	 * getting month
 	 * @return this.month
 	 */
 	public int getMonth() {
@@ -49,7 +53,7 @@ public class CryptoDate {
 	}
 	
 	/***
-	 * 
+	 * setting month
 	 * @param newMon
 	 */
 	public void setMon(int newMon) {
@@ -57,7 +61,7 @@ public class CryptoDate {
 	}
 	
 	/***
-	 * 
+	 * getting year
 	 * @return this.year
 	 */
 	public int getYear() {
@@ -65,14 +69,17 @@ public class CryptoDate {
 	}
 	
 	/***
-	 * 
+	 * setting year
 	 * @param newYear
 	 */
 	public void setYear(int newYear) {
 		year = newYear;
 	}
 	
-
+	/***
+	 * to print date
+	 * @return date
+	 */
 	public String printString() {
 		if(day<10) {
 			return "0"+day+"-"+months[month-1];
@@ -81,7 +88,10 @@ public class CryptoDate {
 		}
 	}
 
-
+	/***
+	 * to print date
+	 * @return date
+	 */
 	public String printInt() {
 		//13-09-2021
 		if(month<10) {

@@ -43,8 +43,9 @@ import cryptoAnalyzer.utils.AvailableCryptoList;
 import cryptoAnalyzer.utils.DataVisualizationCreator;
 
 
-/**
+/***
  * This is a class for main UI
+ * @author Group 11
  *
  */
 public class MainUINew extends JFrame implements ActionListener{
@@ -56,7 +57,7 @@ public class MainUINew extends JFrame implements ActionListener{
 	private static MainUINew instance;
 	private JPanel stats, chartPanel, tablePanel;
 	
-	// Should be a reference to a separate object in actual implementation
+	//a reference to a separate object in actual implementation
 	private List<String> selectedList;
 	private Selection select;
 	
@@ -136,38 +137,6 @@ public class MainUINew extends JFrame implements ActionListener{
 				JDatePanelImpl picker = (JDatePanelImpl) event.getSource();
 				Date selectedDate = (Date) picker.getModel().getValue();
 				select.setStartDate(selectedDate);
-				
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-				//d = new Dates();
-				//d = new Dates(selectedDate.getDate(), selectedDate.getMonth() + 1, selectedDate.getYear() + 1900);
-				//d.setDay(selectedDate.getDate());
-				//d.setMon(selectedDate.getMonth());
-				//d.setYear(selectedDate.getYear() + 1900);
-
-				//System.out.println(d.getDay());
-				//System.out.println(d.getMonth());
-				//System.out.println(d.getYear());
-				//CryptoDate[] d = select.getDateList();
-				//for(int i=0; i<d.length; i++) {
-				//	System.out.println(d[i].printInt());
-				//}
-//=======
-				//Selection sel = new Selection();
-	//			int dates = selectedDate.getDate();
-	//			int m = selectedDate.getMonth() + 1;
-	//			int y = selectedDate.getYear() + 1900;
-	//			Dates d = new Dates(dates, m, y);
-//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
-//=======
-/*				CryptoDate[] d = select.getDateList();
-				
-				for(int i=0; i<d.length; i++) {
-					System.out.println(d[i].printInt());
-				}
-				
-//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
-				System.out.println(selectedDate.toString());*/
 			}
 		});
 		

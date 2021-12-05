@@ -9,7 +9,7 @@ public class AnalysisType {
 	private String type;
 	
 	/***
-	 * 
+	 * constructor
 	 * @param t
 	 */
 	public AnalysisType (String t) {
@@ -17,7 +17,7 @@ public class AnalysisType {
 	}
 	
 	/***
-	 * 
+	 * getting analysis type
 	 * @return this.type;
 	 */
 	public String getType() {
@@ -26,7 +26,7 @@ public class AnalysisType {
 	}
 	
 	/****
-	 * 
+	 * setting new analysis type
 	 * @param newType
 	 */
 	public void setType(String newType) {

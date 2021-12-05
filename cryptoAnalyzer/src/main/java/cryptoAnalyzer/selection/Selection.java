@@ -15,17 +15,20 @@ import javax.swing.JOptionPane;
  */
 public class Selection {
 	
-	//private Cryptocurrency[] cryptos;
 	private String[] cryptoName = null;
 	private CryptoDate[] dates = null;
 	private Frequency freq = null;
 	private String analysisType = null;
 	private Date startDate = null;
+//<<<<<<< HEAD
 	//private Boolean needResetDateList = false;
 	//private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
 	//		"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
 	//private Calendar calendar;
 	
+//=======
+	private Boolean needResetDateList = false;
+//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 	private static Selection instance = null;
 	
 	private Selection() {
@@ -245,6 +248,29 @@ public class Selection {
 			dates = newArr;
 		}
 	}
+
+	
+	public static void main(String[] args) {
+		Cryptocurrency c = new Cryptocurrency("Bitcoin");
+		Cryptocurrency c1 = new Cryptocurrency("Dodge");
+		Cryptocurrency c2 = new Cryptocurrency("Solana");
+		Cryptocurrency c3 = new Cryptocurrency("Ethereum");
+		Selection sel = Selection.getInstance();
+		//sel.addCrypto(c);
+		//sel.addCrypto(c1);
+		//sel.addCrypto(c2);
+		//sel.addCrypto(c3);
+		sel.removeCrypto(c);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE,-3);
+		Date dt= cal.getTime();
+		sel.setStartDate(dt);
+		sel.setFreq(new Frequency("Daily"));;
+		sel.getDateList();
+		
+	}
+	
 	
 	/***
 	 * This is a class that checks if the selected crypto is allowed to be fetched
@@ -269,27 +295,6 @@ public class Selection {
 			e.printStackTrace();
 		}
 		return true;
-		
-	}
-	
-	public static void main(String[] args) {
-		Cryptocurrency c = new Cryptocurrency("Bitcoin");
-		Cryptocurrency c1 = new Cryptocurrency("Dodge");
-		Cryptocurrency c2 = new Cryptocurrency("Solana");
-		Cryptocurrency c3 = new Cryptocurrency("Ethereum");
-		Selection sel = Selection.getInstance();
-		//sel.addCrypto(c);
-		//sel.addCrypto(c1);
-		//sel.addCrypto(c2);
-		//sel.addCrypto(c3);
-		sel.removeCrypto(c);
-		
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE,-3);
-		Date dt= cal.getTime();
-		sel.setStartDate(dt);
-		sel.setFreq(new Frequency("Daily"));;
-		sel.getDateList();
 		
 	}
 	
