@@ -233,6 +233,29 @@ public class Selection {
 			dates = newArr;
 		}
 	}
+
+	
+	public static void main(String[] args) {
+		Cryptocurrency c = new Cryptocurrency("Bitcoin");
+		Cryptocurrency c1 = new Cryptocurrency("Dodge");
+		Cryptocurrency c2 = new Cryptocurrency("Solana");
+		Cryptocurrency c3 = new Cryptocurrency("Ethereum");
+		Selection sel = Selection.getInstance();
+		//sel.addCrypto(c);
+		//sel.addCrypto(c1);
+		//sel.addCrypto(c2);
+		//sel.addCrypto(c3);
+		sel.removeCrypto(c);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE,-3);
+		Date dt= cal.getTime();
+		sel.setStartDate(dt);
+		sel.setFreq(new Frequency("Daily"));;
+		sel.getDateList();
+		
+	}
+	
 	
 	/***
 	 * This is a class that checks if the selected crypto is allowed to be fetched
@@ -257,27 +280,6 @@ public class Selection {
 			e.printStackTrace();
 		}
 		return true;
-		
-	}
-	
-	public static void main(String[] args) {
-		Cryptocurrency c = new Cryptocurrency("Bitcoin");
-		Cryptocurrency c1 = new Cryptocurrency("Dodge");
-		Cryptocurrency c2 = new Cryptocurrency("Solana");
-		Cryptocurrency c3 = new Cryptocurrency("Ethereum");
-		Selection sel = Selection.getInstance();
-		//sel.addCrypto(c);
-		//sel.addCrypto(c1);
-		//sel.addCrypto(c2);
-		//sel.addCrypto(c3);
-		sel.removeCrypto(c);
-		
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE,-3);
-		Date dt= cal.getTime();
-		sel.setStartDate(dt);
-		sel.setFreq(new Frequency("Daily"));;
-		sel.getDateList();
 		
 	}
 	
