@@ -9,7 +9,7 @@ public class Frequency {
 	public String freq;
 	
 	/***
-	 * 
+	 * constructor
 	 * @param f
 	 */
 	public Frequency(String f) {
@@ -18,7 +18,7 @@ public class Frequency {
 	}
 	
 	/***
-	 * 
+	 * getting frequency interval
 	 * @return this.freq
 	 */
 	public String getInterval() {
@@ -26,7 +26,7 @@ public class Frequency {
 	}
 	
 	/***
-	 * 
+	 * setting new frequency interval
 	 * @param newFreq
 	 */
 	public void setFreq(String newFreq) {

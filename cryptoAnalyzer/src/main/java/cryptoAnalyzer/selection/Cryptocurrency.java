@@ -1,7 +1,5 @@
 package cryptoAnalyzer.selection;
 
-import javax.swing.JComboBox;
-
 /***
  * 
  * @author Yeonsil Choi
@@ -12,7 +10,7 @@ public class Cryptocurrency {
 	private String name;
 	
 	/***
-	 * 
+	 * constructor
 	 * @param n
 	 */
 	public Cryptocurrency(String n) {
@@ -20,7 +18,7 @@ public class Cryptocurrency {
 	}
 	
 	/***
-	 * 
+	 * getting cryptocurrency name
 	 * @return this.name
 	 */
 	public String getName() {
@@ -28,14 +26,18 @@ public class Cryptocurrency {
 	}
 	
 	/***
-	 * 
+	 * setting new cryptocurrency name
 	 * @param newName
 	 */
 	public void setName(String newName) {
 		this.name = newName;
 	}
 	
-	
+	/***
+	 * to check if names are same
+	 * @param c
+	 * @return boolean value
+	 */
 	public Boolean isEqual(Cryptocurrency c) {
 		if(this.getName().equals(c.getName())) {
 			return true;

@@ -15,17 +15,12 @@ import javax.swing.JOptionPane;
  */
 public class Selection {
 	
-	//private Cryptocurrency[] cryptos;
 	private String[] cryptoName = null;
 	private CryptoDate[] dates = null;
 	private Frequency freq = null;
 	private String analysisType = null;
 	private Date startDate = null;
 	private Boolean needResetDateList = false;
-	//private String[] unavailable= {"Wonderland", "ECOMI", "Marinade staked SOL", "LINK", 
-	//		"NEXO", "Huobi Token", "Decred", "Osmosis", "TrueUSD","Frax"};
-	//private Calendar calendar;
-	
 	private static Selection instance = null;
 	
 	private Selection() {
