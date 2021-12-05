@@ -6,7 +6,7 @@ package cryptoAnalyzer.selection;
  */
 public class Frequency {
 	
-	private String freq;
+	public String freq;
 	
 	/***
 	 * 
@@ -21,7 +21,7 @@ public class Frequency {
 	 * 
 	 * @return this.freq
 	 */
-	public String getFreq() {
+	public String getInterval() {
 		return this.freq;
 	}
 	

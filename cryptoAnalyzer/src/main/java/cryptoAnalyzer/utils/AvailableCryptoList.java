@@ -59,7 +59,7 @@ public class AvailableCryptoList {
 					id = object.get("id").getAsString();
 					
 					availableCryptosMap.put(name, id);
-					availableCryptosList.add(name);
+					availableCryptosList.add(id);
 				}
 			}
 

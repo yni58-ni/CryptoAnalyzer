@@ -9,8 +9,6 @@ import javax.swing.JComboBox;
  */
 public class Cryptocurrency {
 	
-	private JComboBox<String> cryptoList;
-	
 	private String name;
 	
 	/***
@@ -18,8 +16,6 @@ public class Cryptocurrency {
 	 * @param n
 	 */
 	public Cryptocurrency(String n) {
-		//n = cryptoList.getSelectedItem().toString();
-		//n = String.valueOf(cryptoList.getSelectedItem());
 		this.name = n;
 	}
 	
@@ -36,9 +32,9 @@ public class Cryptocurrency {
 	 * @param newName
 	 */
 	public void setName(String newName) {
-		//newName = cryptoList.getSelectedItem().toString();
 		this.name = newName;
 	}
+	
 	
 	public Boolean isEqual(Cryptocurrency c) {
 		if(this.getName().equals(c.getName())) {

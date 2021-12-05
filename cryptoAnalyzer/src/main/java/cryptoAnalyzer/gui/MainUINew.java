@@ -39,7 +39,7 @@ import cryptoAnalyzer.selection.Frequency;
 import cryptoAnalyzer.selection.Selection;
 import cryptoAnalyzer.utils.AvailableCryptoList;
 import cryptoAnalyzer.utils.DataVisualizationCreator;
-//import cryptoAnalyzer.utils.DataVisualizationCreatorOriginal;
+
 
 /**
  * This is a class for main UI
@@ -60,9 +60,7 @@ public class MainUINew extends JFrame implements ActionListener{
 	
 	private JTextArea selectedCryptoList;
 	private JComboBox<String> cryptoList;
-	
-	//private static Dates d;
-	//private static Frequency f;
+
 
 	public static MainUINew getInstance() {
 		if (instance == null)
@@ -138,6 +136,7 @@ public class MainUINew extends JFrame implements ActionListener{
 				select.setStartDate(selectedDate);
 				
 //<<<<<<< HEAD
+//<<<<<<< HEAD
 				//d = new Dates();
 				//d = new Dates(selectedDate.getDate(), selectedDate.getMonth() + 1, selectedDate.getYear() + 1900);
 				//d.setDay(selectedDate.getDate());
@@ -158,7 +157,15 @@ public class MainUINew extends JFrame implements ActionListener{
 	//			int y = selectedDate.getYear() + 1900;
 	//			Dates d = new Dates(dates, m, y);
 //>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
-				System.out.println(selectedDate.toString());
+//=======
+/*				CryptoDate[] d = select.getDateList();
+				
+				for(int i=0; i<d.length; i++) {
+					System.out.println(d[i].printInt());
+				}
+				
+//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
+				System.out.println(selectedDate.toString());*/
 			}
 		});
 		
@@ -179,6 +186,7 @@ public class MainUINew extends JFrame implements ActionListener{
 		metricsNames.add("Percent Change of Volume");
 		metricsNames.add("Percent Change of Coins in Circulation");
 		JComboBox<String> metricsList = new JComboBox<String>(metricsNames);
+		select.setAnalysisType(metricsList.getSelectedItem().toString());
 		metricsList.addActionListener(new ActionListener() {
 
 			@Override
@@ -200,6 +208,7 @@ public class MainUINew extends JFrame implements ActionListener{
 		intervalNames.add("Yearly");
 
 		JComboBox<String> intervalList = new JComboBox<String>(intervalNames);
+		select.setFreq(new Frequency(intervalList.getSelectedItem().toString()));
 
 		intervalList.addActionListener(new ActionListener() {
 
@@ -208,14 +217,8 @@ public class MainUINew extends JFrame implements ActionListener{
 				JComboBox<String> combo = (JComboBox<String>) event.getSource();
 				String selectedInterval = combo.getSelectedItem().toString();
 				
-//<<<<<<< HEAD
 				Frequency f = new Frequency(selectedInterval.toString());
 				select.setFreq(f);
-//=======
-				//f = new Frequency();
-				//f.setFreq(selectedInterval.toString());
-				//Frequency freq = new Frequency(selectedInterval.toString());
-//>>>>>>> branch 'master' of https://repo.csd.uwo.ca/scm/compsci2212_f2021/group11.git
 				System.out.println(selectedInterval.toString());
 				
 			}
@@ -322,4 +325,5 @@ public class MainUINew extends JFrame implements ActionListener{
 			}
 		}
 	}
+	
 }

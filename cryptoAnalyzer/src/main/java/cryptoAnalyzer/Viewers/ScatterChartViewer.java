@@ -103,13 +103,13 @@ public class ScatterChartViewer extends Viewer{
 		plot.setRenderer(0, itemrenderer1);
 		DateAxis domainAxis = new DateAxis("");
 		plot.setDomainAxis(domainAxis);
-		if(select.getAnalysisType().toLowerCase().equals("price")) {
+		if(select.getAnalysisType().toLowerCase().equals("Price")) {
 			plot.setRangeAxis(new LogAxis("Price(CAD)"));
 		}else {
 			plot.setRangeAxis(new LogAxis(select.getAnalysisType()));
 		}
 		
-		JFreeChart scatterChart = new JFreeChart(select.getFreq()+" "+select.getAnalysisType()+" Scatter Chart",
+		JFreeChart scatterChart = new JFreeChart(select.getFreq().getInterval()+" "+select.getAnalysisType()+" Scatter Chart",
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 
 		ChartPanel chartPanel = new ChartPanel(scatterChart);

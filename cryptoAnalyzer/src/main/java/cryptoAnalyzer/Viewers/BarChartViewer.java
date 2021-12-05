@@ -88,7 +88,8 @@ public class BarChartViewer extends Viewer{
 		plot.setRenderer(0, barrenderer1);
 		CategoryAxis domainAxis = new CategoryAxis("Date");
 		plot.setDomainAxis(domainAxis);
-		if(select.getAnalysisType().toLowerCase().equals("price")) {
+		//String at = select.getAnalysisType();
+		if(select.getAnalysisType().equals("Price")) {
 			LogAxis rangeAxis = new LogAxis("Price(CAD)");
 			rangeAxis.setRange(new Range(1.0, 70000.0));
 			plot.setRangeAxis(rangeAxis);
@@ -98,7 +99,7 @@ public class BarChartViewer extends Viewer{
 			plot.setRangeAxis(rangeAxis);
 		}
 		
-		JFreeChart barChart = new JFreeChart(select.getFreq()+" "+select.getAnalysisType()+" Bar Chart", new Font("Serif", java.awt.Font.BOLD, 18), plot,
+		JFreeChart barChart = new JFreeChart(select.getFreq().getInterval()+" "+select.getAnalysisType()+" Bar Chart", new Font("Serif", java.awt.Font.BOLD, 18), plot,
 				true);
 
 		ChartPanel chartPanel = new ChartPanel(barChart);

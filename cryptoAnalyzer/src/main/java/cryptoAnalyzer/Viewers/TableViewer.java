@@ -96,18 +96,18 @@ public class TableViewer extends Viewer{
 					double db = (double) result[i][j];
 					String s = "";
 					if(db>=1E12) {
-						db = Math.round(db/(1E12)*100);
-						s = s + db/100 + "T";
+						db = (double) Math.round(db/(1E12)*10000);
+						s = s + db/10000 + "T";
 						//System.out.println(s);
 					}else if(db>=1E9) {
-						db =  Math.round(db/(1E9)*100);
-						s = s + db/100 + "B";
+						db =  (double) Math.round(db/(1E9)*10000);
+						s = s + db/10000 + "B";
 					}else if(db>=1E6) {
-						db = Math.round(db/(1E6)*100);
-						s = s + db/100 + "M";
+						db = (double) Math.round(db/(1E6)*10000);
+						s = s + db/10000 + "M";
 					}else {
 						//data[i-1][j] = result[i][j].toString();
-						s = s + Math.round(db*100)/100;
+						s = s + (double) Math.round(db*10000)/10000;
 					}
 					data[i-1][j] = s;
 					
@@ -121,7 +121,7 @@ public class TableViewer extends Viewer{
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBorder (BorderFactory.createTitledBorder (BorderFactory.createEtchedBorder (),
-               select.getFreq()+" "+select.getAnalysisType()+" Summary Table",
+               select.getFreq().getInterval()+" "+select.getAnalysisType()+" Summary Table",
                 TitledBorder.CENTER,
                 TitledBorder.TOP));
 		

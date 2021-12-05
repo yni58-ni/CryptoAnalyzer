@@ -23,5 +23,4 @@ public abstract class Strategy {
 	protected Result perform(Selection sel) {
 		return res;
 	}
-	
 }

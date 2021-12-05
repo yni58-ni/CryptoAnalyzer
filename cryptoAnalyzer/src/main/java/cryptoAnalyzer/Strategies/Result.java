@@ -92,5 +92,4 @@ public class Result {
 	public int getCol() {
 		return numCol;
 	}
-	
 }

@@ -53,4 +53,5 @@ public class CICStrategy extends Strategy{
 		}
 		return res;			
 	}	
+	
 }

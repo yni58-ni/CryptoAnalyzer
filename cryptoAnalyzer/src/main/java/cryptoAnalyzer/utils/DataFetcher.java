@@ -82,9 +82,9 @@ public class DataFetcher {
 	
 	public static void main(String[] args) {
 		DataFetcher fetcher = new DataFetcher();
-		double price = fetcher.getPriceForCoin("bitcoin", "08-09-2021");
-		double marketCap = fetcher.getMarketCapForCoin("bitcoin", "08-09-2021");
-		double volume = fetcher.getVolumeForCoin("bitcoin", "08-09-2021");
+		double price = fetcher.getPriceForCoin("bitcoin", "04-12-2021");
+		double marketCap = fetcher.getMarketCapForCoin("binancecoin", "08-01-2021");
+		double volume = fetcher.getVolumeForCoin("binancecoin", "08-01-2021");
 		
 		System.out.println("Bitcoin=>\tPrice: " + price + 
 								"\n\t\tMarket Cap: " + marketCap + 
