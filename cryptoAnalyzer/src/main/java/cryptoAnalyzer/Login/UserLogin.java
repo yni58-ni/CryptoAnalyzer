@@ -7,9 +7,11 @@ package cryptoAnalyzer.Login;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.*;
 import java.util.concurrent.TimeUnit;
-import java.util.Date;
 
 import cryptoAnalyzer.gui.MainUINew;
 import cryptoAnalyzer.gui.*;
@@ -45,7 +47,7 @@ public class UserLogin implements ActionListener{
 		userNameLabel.setBounds(50,25,75,25);
 		userPasswordLabel.setBounds(50,75,75,25);
 
-		//User name and password input InputField boundaries
+		//User name and password input field boundaries
 		userNameInputField.setBounds(125,25,200,25);
 		userPasswordInputField.setBounds(125,75,200,25);
 		
@@ -81,12 +83,43 @@ public class UserLogin implements ActionListener{
 		//Set the title of the frame
 		frame.setTitle("Login");
 		
+		//Set layout manager to null
 		frame.setLayout(null);
-		frame.setVisible(true);
-
 		
+		//Make the frame visible
+		frame.setVisible(true);
 	}
 
+	//Main
+	public static void main(String[] args) {
+		//Generate login database using the Login Server class
+		LoginServer loginDatabase = new LoginServer();
+		
+		//Create the login panel itself with the given database being passed along
+		UserLogin loginPanel = new UserLogin(loginDatabase.getLoginInfo());
+	}
+	
+	//Error message method
+	public void errorAlert (String message) {
+		//Set the message color to red
+		alertLabel.setForeground(Color.red);
+		//Set the alert to display the correct error message
+		alertLabel.setText(message);
+		
+		//Create a timer
+	    Timer timer = new Timer();
+	    //Create a simple timer task that will terminate the program
+		TimerTask terminate = new TimerTask() {
+			@Override
+			public void run() {
+				System.exit(0);
+			}
+			
+		};
+		
+		//Schedule the timer to run the terminate task after 2.5 seconds (2500 milliseconds)
+	    timer.schedule(terminate, 2500);
+	}
 	
 	public void actionPerformed(ActionEvent e) {
 		
@@ -117,19 +150,17 @@ public class UserLogin implements ActionListener{
 				}
 				//Else, (if the password does not match the given user name
 				else {
-					alertLabel.setForeground(Color.red);
-					alertLabel.setText("Wrong password");
-					
+					//call error alert with the correct message as a parameter
+					errorAlert("Wrong password");
 				}
 
 			}
 			//Else, (if the user name is not in the database)
 			else {
-				//Set the color of the alert text to red
-				alertLabel.setForeground(Color.red);
-				//Set the alert to the correct message
-				alertLabel.setText("User does not exist");
+				//call error alert with the correct message as a parameter
+				errorAlert("User does not exist");
 			}
 		}
-	}	
+	}
+
 }

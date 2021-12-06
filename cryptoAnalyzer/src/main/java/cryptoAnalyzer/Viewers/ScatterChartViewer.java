@@ -103,7 +103,7 @@ public class ScatterChartViewer extends Viewer{
 		plot.setRenderer(0, itemrenderer1);
 		DateAxis domainAxis = new DateAxis("");
 		plot.setDomainAxis(domainAxis);
-		if(select.getAnalysisType().toLowerCase().equals("Price")) {
+		if(select.getAnalysisType().equals("Price")) {
 			plot.setRangeAxis(new LogAxis("Price(CAD)"));
 		}else {
 			plot.setRangeAxis(new LogAxis(select.getAnalysisType()));
