@@ -90,15 +90,6 @@ public class UserLogin implements ActionListener{
 		frame.setVisible(true);
 	}
 
-	//Main
-	public static void main(String[] args) {
-		//Generate login database using the Login Server class
-		LoginServer loginDatabase = new LoginServer();
-		
-		//Create the login panel itself with the given database being passed along
-		UserLogin loginPanel = new UserLogin(loginDatabase.getLoginInfo());
-	}
-	
 	//Error message method
 	public void errorAlert (String message) {
 		//Set the message color to red
