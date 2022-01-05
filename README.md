@@ -1,4 +1,6 @@
 # CryptoAnalyzer
+<img width="820" alt="Screen Shot 2022-01-05 at 5 26 42 PM" src="https://user-images.githubusercontent.com/61612345/148298401-0e7f8b15-920f-4834-b838-fa95a184032d.png">
+
 # Purpose
 For this project, we will specify, design and implement a system that can: retrieve data related to cryptocurrency prices from the “CoinGecko” cryptocurrency repository, process said data (if required) using a wide array of different types of analyses, and finally rendering the data retrieved from CoinGecko or the processed data using a variety of techniques (such as bar graphs, scatter charts, tables and line-graphs). The system will also have a User Interface (UI) that will allow the user to make selections of the parameters they wish to use. The UI will also be responsible for rendering the data (either the data retrieved from CoinGecko, or the analyzed data).
 # Overview
